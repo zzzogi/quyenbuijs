@@ -1,5 +1,6 @@
 {
   "name": "quyen-portfolio",
+  "homepage": "https://zzzogi.github.io/quyenbuijs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
