@@ -12,7 +12,7 @@ const AboutSection = () => {
         <h2 className="section-title neon-glow">{nav.about}</h2>
         <div className="about-content fade-in">
           <img
-            src={"/assets/images/about/quyenbui.jpg"}
+            src={"/quyenbuijs/assets/images/about/quyenbui.jpg"}
             alt="Quyen Bui"
             className="profile-image"
           />

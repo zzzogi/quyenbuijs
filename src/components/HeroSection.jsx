@@ -8,10 +8,10 @@ const HeroSection = () => {
 
   // Array of background images for Hero section
   const backgroundImages = [
-    "/assets/images/profile/profile-1.jpg",
-    "/assets/images/profile/profile-2.jpg",
-    "/assets/images/profile/profile-3.jpg",
-    "/assets/images/profile/profile-4.jpg",
+    "/quyenbuijs/assets/images/profile/profile-1.jpg",
+    "/quyenbuijs/assets/images/profile/profile-2.jpg",
+    "/quyenbuijs/assets/images/profile/profile-3.jpg",
+    "/quyenbuijs/assets/images/profile/profile-4.jpg",
   ];
 
   // Rotate background images every 5 seconds

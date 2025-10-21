@@ -22,11 +22,11 @@ const AchievementsSection = () => {
         en: "Udemy",
         vi: "Udemy",
       },
-      certificateImage: "/assets/images/certificates/cert-1.jpg",
+      certificateImage: "/quyenbuijs/assets/images/certificates/cert-1.jpg",
       icon: (
         <div>
           <img
-            src={"/assets/images/icons/nodejs.png"}
+            src={"/quyenbuijs/assets/images/icons/nodejs.png"}
             alt="certificate icon"
             style={{
               width: "64px",
@@ -34,7 +34,7 @@ const AchievementsSection = () => {
             }}
           />{" "}
           <img
-            src={"/assets/images/icons/express.png"}
+            src={"/quyenbuijs/assets/images/icons/express.png"}
             alt="certificate icon"
             style={{
               width: "64px",
@@ -42,7 +42,7 @@ const AchievementsSection = () => {
             }}
           />{" "}
           <img
-            src={"/assets/images/icons/mongo.png"}
+            src={"/quyenbuijs/assets/images/icons/mongo.png"}
             alt="certificate icon"
             style={{
               width: "64px",
@@ -67,8 +67,13 @@ const AchievementsSection = () => {
         en: "Udemy",
         vi: "Udemy",
       },
-      certificateImage: "/assets/images/certificates/cert-2.jpg",
-      icon: <img src={"/assets/images/icons/js.png"} alt="certificate icon" />,
+      certificateImage: "/quyenbuijs/assets/images/certificates/cert-2.jpg",
+      icon: (
+        <img
+          src={"/quyenbuijs/assets/images/icons/js.png"}
+          alt="certificate icon"
+        />
+      ),
     },
     {
       id: 3,
@@ -85,9 +90,12 @@ const AchievementsSection = () => {
         en: "Udemy",
         vi: "Udemy",
       },
-      certificateImage: "/assets/images/certificates/cert-3.jpg",
+      certificateImage: "/quyenbuijs/assets/images/certificates/cert-3.jpg",
       icon: (
-        <img src={"/assets/images/icons/html.png"} alt="certificate icon" />
+        <img
+          src={"/quyenbuijs/assets/images/icons/html.png"}
+          alt="certificate icon"
+        />
       ),
     },
     {
@@ -105,10 +113,10 @@ const AchievementsSection = () => {
         en: "IDP",
         vi: "IDP",
       },
-      certificateImage: "/assets/images/certificates/ielts.jpg",
+      certificateImage: "/quyenbuijs/assets/images/certificates/ielts.jpg",
       icon: (
         <img
-          src={"/assets/images/icons/uk.png"}
+          src={"/quyenbuijs/assets/images/icons/uk.png"}
           alt="certificate icon"
           style={{
             width: "64px",
@@ -132,7 +140,7 @@ const AchievementsSection = () => {
     //     en: "Vietnam Tech Community",
     //     vi: "Cộng đồng Công nghệ Việt Nam",
     //   },
-    //   certificateImage: "/assets/images/certificates/hackathon-certificate.jpg",
+    //   certificateImage: "/quyenbuijs/assets/images/certificates/hackathon-certificate.jpg",
     //   icon: "💻",
     // },
     // {
@@ -150,7 +158,7 @@ const AchievementsSection = () => {
     //     en: "Le Wagon Vietnam",
     //     vi: "Le Wagon Việt Nam",
     //   },
-    //   certificateImage: "/assets/images/certificates/fullstack-certificate.jpg",
+    //   certificateImage: "/quyenbuijs/assets/images/certificates/fullstack-certificate.jpg",
     //   icon: "🎓",
     // },
   ];

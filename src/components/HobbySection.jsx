@@ -24,9 +24,9 @@ const HobbySection = () => {
         vi: "50000+ đĩa cơm đã ăn",
       },
       images: [
-        "/assets/images/hobbies/food-1.jpg",
-        "/assets/images/hobbies/food-2.jpg",
-        "/assets/images/hobbies/food-3.jpg",
+        "/quyenbuijs/assets/images/hobbies/food-1.jpg",
+        "/quyenbuijs/assets/images/hobbies/food-2.jpg",
+        "/quyenbuijs/assets/images/hobbies/food-3.jpg",
       ],
     },
     {
@@ -46,9 +46,9 @@ const HobbySection = () => {
         vi: "1000+ giờ chơi",
       },
       images: [
-        "/assets/images/hobbies/gaming-1.png",
-        "/assets/images/hobbies/gaming-2.jpg",
-        "/assets/images/hobbies/gaming-3.jpg",
+        "/quyenbuijs/assets/images/hobbies/gaming-1.png",
+        "/quyenbuijs/assets/images/hobbies/gaming-2.jpg",
+        "/quyenbuijs/assets/images/hobbies/gaming-3.jpg",
       ],
     },
 
@@ -69,9 +69,9 @@ const HobbySection = () => {
         vi: "Nghi thức hàng ngày",
       },
       images: [
-        "/assets/images/hobbies/coffee-1.jpg",
-        "/assets/images/hobbies/coffee-2.jpg",
-        "/assets/images/hobbies/coffee-3.jpg",
+        "/quyenbuijs/assets/images/hobbies/coffee-1.jpg",
+        "/quyenbuijs/assets/images/hobbies/coffee-2.jpg",
+        "/quyenbuijs/assets/images/hobbies/coffee-3.jpg",
       ],
     },
     {
@@ -91,9 +91,9 @@ const HobbySection = () => {
         vi: "15+ quốc gia đã đến",
       },
       images: [
-        "/assets/images/hobbies/travel-1.jpg",
-        "/assets/images/hobbies/travel-2.jpg",
-        "/assets/images/hobbies/travel-3.jpg",
+        "/quyenbuijs/assets/images/hobbies/travel-1.jpg",
+        "/quyenbuijs/assets/images/hobbies/travel-2.jpg",
+        "/quyenbuijs/assets/images/hobbies/travel-3.jpg",
       ],
     },
   ];
