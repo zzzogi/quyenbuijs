@@ -1,63 +1,70 @@
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import portfolioData from "../data/pageData";
+import Section from "./Section";
+import TechTag from "./TechTag";
+import Icon from "./Icon";
 
 const ProjectsSection = () => {
   const { language } = useContext(LanguageContext);
-  const nav = portfolioData.navigation[language];
 
   return (
-    <section id="projects" className="section">
-      <div className="container">
-        <h2 className="section-title neon-glow">{nav.projects}</h2>
-        <div className="projects-grid">
-          {portfolioData.projects.map((project) => (
-            <div key={project.id} className="project-item fade-in">
+    <Section
+      id="projects"
+      index={3}
+      title={portfolioData.section_titles.projects[language]}
+    >
+      <div className="projects-grid">
+        {portfolioData.projects.map((project) => (
+          <article key={project.id} className="project-card fade-in">
+            <div className="project-media">
               <img
                 src={project.image}
                 alt={project.title[language]}
-                className="project-image"
+                width="400"
+                height="250"
+                loading="lazy"
               />
-              <div className="project-content">
-                <h3>{project.title[language]}</h3>
-                <p className="project-description">
-                  {project.description[language]}
-                </p>
-                <div className="experience-technologies">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+            </div>
+            <div className="project-content">
+              <h3 className="project-title">{project.title[language]}</h3>
+              <p className="project-description">
+                {project.description[language]}
+              </p>
+              <div className="tech-tags">
+                {project.technologies.map((tech) => (
+                  <TechTag key={tech}>{tech}</TechTag>
+                ))}
+              </div>
+              {(project.demo_url || project.github_url) && (
                 <div className="project-links">
-                  {project.demo_url ? (
+                  {project.demo_url && (
                     <a
                       href={project.demo_url}
                       className="project-link"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Demo
+                      Demo <Icon name="arrow-up-right" size={14} />
                     </a>
-                  ) : null}
-                  {project.github_url ? (
+                  )}
+                  {project.github_url && (
                     <a
                       href={project.github_url}
                       className="project-link"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      GitHub
+                      GitHub <Icon name="arrow-up-right" size={14} />
                     </a>
-                  ) : null}
+                  )}
                 </div>
-              </div>
+              )}
             </div>
-          ))}
-        </div>
+          </article>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 };
 

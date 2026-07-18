@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Icon from "./Icon";
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,22 +13,17 @@ const BackToTopButton = () => {
       setIsVisible(scrollPercentage > 20);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <button
       className={`back-to-top ${isVisible ? "visible" : ""}`}
-      onClick={scrollToTop}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Back to top"
-      title="Back to top"
     >
-      ↑
+      <Icon name="arrow-up" size={18} />
     </button>
   );
 };

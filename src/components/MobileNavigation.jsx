@@ -1,7 +1,20 @@
+import { useEffect } from "react";
 import portfolioData from "../data/pageData";
+import Icon from "./Icon";
 
 const MobileNavigation = ({ isOpen, onClose, language }) => {
-  const nav = portfolioData.navigation[language];
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, onClose]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -12,60 +25,29 @@ const MobileNavigation = ({ isOpen, onClose, language }) => {
   };
 
   return (
-    <div className={`mobile-nav ${isOpen ? "open" : ""}`}>
-      <button className="mobile-nav-close" onClick={onClose}>
-        ×
+    <div
+      className={`mobile-nav ${isOpen ? "open" : ""}`}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+    >
+      <button className="mobile-nav-close" onClick={onClose} aria-label="Close menu">
+        <Icon name="x" size={24} />
       </button>
-      <a
-        href="#about"
-        className="mobile-nav-link"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToSection("about");
-        }}
-      >
-        {nav.about}
-      </a>
-      <a
-        href="#experience"
-        className="mobile-nav-link"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToSection("experience");
-        }}
-      >
-        {nav.experience}
-      </a>
-      <a
-        href="#projects"
-        className="mobile-nav-link"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToSection("projects");
-        }}
-      >
-        {nav.projects}
-      </a>
-      <a
-        href="#gallery"
-        className="mobile-nav-link"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToSection("gallery");
-        }}
-      >
-        {nav.gallery}
-      </a>
-      <a
-        href="#contact"
-        className="mobile-nav-link"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToSection("contact");
-        }}
-      >
-        {nav.contact}
-      </a>
+      {portfolioData.navItems.map(({ id, label }, i) => (
+        <a
+          key={id}
+          href={`#${id}`}
+          className="mobile-nav-link"
+          style={{ transitionDelay: isOpen ? `${100 + i * 50}ms` : "0ms" }}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection(id);
+          }}
+        >
+          {label[language]}
+        </a>
+      ))}
     </div>
   );
 };

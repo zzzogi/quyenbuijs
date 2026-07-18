@@ -1,124 +1,102 @@
-import MobileNavigation from "./MobileNavigation";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import { ThemeContext } from "../context/ThemeContext";
 import portfolioData from "../data/pageData";
-import { useState } from "react";
+import MobileNavigation from "./MobileNavigation";
+import Icon from "./Icon";
 
-const Header = ({ isVisible, showPersistentWelcome }) => {
+export const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
+const Header = () => {
   const { language, setLanguage } = useContext(LanguageContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const nav = portfolioData.navigation[language];
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+
+    portfolioData.navItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
-      <header className={`header ${isVisible ? "visible" : ""}`}>
-        <div className="header-content">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <a href="#" className="logo neon-glow">
-              Quyenbui.js
-            </a>
-          </div>
+      <header className={`header ${scrolled ? "scrolled" : ""}`}>
+        <div className="header-inner">
+          <a
+            href="#hero"
+            className="logo"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            quyenbui.js
+          </a>
 
-          <div className="nav-container">
-            <ul className="nav-menu">
-              <li>
-                <a
-                  href="#about"
-                  className="nav-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection("about");
-                  }}
-                >
-                  {nav.about}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#experience"
-                  className="nav-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection("experience");
-                  }}
-                >
-                  {nav.experience}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="nav-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection("projects");
-                  }}
-                >
-                  {nav.projects}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#gallery"
-                  className="nav-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection("gallery");
-                  }}
-                >
-                  {nav.gallery}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="nav-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection("contact");
-                  }}
-                >
-                  {nav.contact}
-                </a>
-              </li>
-            </ul>
+          <nav className="nav-menu" aria-label="Main navigation">
+            {portfolioData.navItems.map(({ id, label }) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`nav-link ${activeSection === id ? "active" : ""}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(id);
+                }}
+              >
+                {label[language]}
+              </a>
+            ))}
+          </nav>
 
-            <div className="controls">
-              <button
-                className="toggle-btn"
-                onClick={() => setLanguage(language === "en" ? "vi" : "en")}
-                aria-label="Toggle language"
-              >
-                {language === "en" ? "VI" : "EN"}
-              </button>
-              {/* <button
-                className="toggle-btn"
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? "☀️" : "🌙"}
-              </button> */}
-              <button
-                className="mobile-menu-btn"
-                onClick={toggleMobileMenu}
-                aria-label="Toggle mobile menu"
-              >
-                ☰
-              </button>
-            </div>
+          <div className="controls">
+            <button
+              className="control-btn lang-btn"
+              onClick={() => setLanguage(language === "en" ? "vi" : "en")}
+              aria-label="Toggle language"
+            >
+              {language === "en" ? "VI" : "EN"}
+            </button>
+            <button
+              className="control-btn"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+            >
+              <Icon name={theme === "dark" ? "sun" : "moon"} size={16} />
+            </button>
+            <button
+              className="control-btn mobile-menu-btn"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open menu"
+            >
+              <Icon name="menu" size={18} />
+            </button>
           </div>
         </div>
       </header>

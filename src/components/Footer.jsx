@@ -1,49 +1,42 @@
 import portfolioData from "../data/pageData";
+import Icon from "./Icon";
 
 const Footer = () => {
+  const { social_links, personal_info } = portfolioData;
+
   return (
     <footer className="footer">
-      <div className="footer-content">
-        <div className="social-links">
+      <div className="container footer-inner">
+        <p className="copyright">
+          © {new Date().getFullYear()} {personal_info.name}
+        </p>
+        <div className="footer-socials">
           <a
-            href={portfolioData.social_links.github}
+            href={social_links.github}
             className="social-link"
             target="_blank"
             rel="noopener noreferrer"
-            title="GitHub"
+            aria-label="GitHub"
           >
-            <span>🐙</span>
+            <Icon name="github" size={18} />
           </a>
           <a
-            href={portfolioData.social_links.linkedin}
+            href={social_links.linkedin}
             className="social-link"
             target="_blank"
             rel="noopener noreferrer"
-            title="LinkedIn"
+            aria-label="LinkedIn"
           >
-            <span>💼</span>
+            <Icon name="linkedin" size={18} />
           </a>
           <a
-            href={portfolioData.social_links.email}
+            href={social_links.email}
             className="social-link"
-            title="Email"
+            aria-label="Email"
           >
-            <span>✉️</span>
-          </a>
-          <a
-            href={portfolioData.social_links.twitter}
-            className="social-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Twitter"
-          >
-            <span>🐦</span>
+            <Icon name="mail" size={18} />
           </a>
         </div>
-        <p className="copyright">
-          &copy; {new Date().getFullYear()} Quyen Bui. Built with passion &amp;
-          neon lights.
-        </p>
       </div>
     </footer>
   );

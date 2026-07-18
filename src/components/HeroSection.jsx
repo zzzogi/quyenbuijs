@@ -1,77 +1,61 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import { useState, useEffect } from "react";
+import portfolioData from "../data/pageData";
+import { scrollToSection } from "./Header";
 
 const HeroSection = () => {
   const { language } = useContext(LanguageContext);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { hero, personal_info } = portfolioData;
 
-  // Array of background images for Hero section
-  const backgroundImages = [
-    "/quyenbuijs/assets/images/profile/profile-1.jpg",
-    "/quyenbuijs/assets/images/profile/profile-2.jpg",
-    "/quyenbuijs/assets/images/profile/profile-3.jpg",
-    "/quyenbuijs/assets/images/profile/profile-4.jpg",
-  ];
-
-  // Rotate background images every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000);
-
+      setCurrentImageIndex((prev) => (prev + 1) % hero.portraits.length);
+    }, 8000);
     return () => clearInterval(interval);
-  }, [backgroundImages.length]);
-
-  const heroContent = {
-    title: "Welcome to Quyen's World",
-    subtitle: {
-      en: "Full Stack Developer | React Specialist | Cyber Security Enthusiast",
-      vi: "Lập Trình Viên Full Stack | Chuyên Gia React | Đam Mê An ninh mạng",
-    },
-    description: {
-      en: "Crafting digital experiences with cutting-edge technology",
-      vi: "Tạo nên trải nghiệm số với công nghệ tiên tiến",
-    },
-  };
+  }, [hero.portraits.length]);
 
   return (
     <section id="hero" className="hero-section">
-      {/* Background image slideshow */}
-      <div className="hero-background-slideshow">
-        {backgroundImages.map((image, index) => (
-          // <div
-          //   key={index}
-          //   className={`background-image ${
-          //     index === currentImageIndex ? "active" : ""
-          //   }`}
-          //   style={{ backgroundImage: `url(${image})` }}
-          // ></div>
-          <img
-            key={index}
-            src={image}
-            alt="profile image"
-            className={`background-image ${
-              index === currentImageIndex ? "active" : ""
-            }`}
-          />
-        ))}
-        <div className="background-overlay"></div>
-      </div>
+      <div className="container hero-inner">
+        <div className="hero-copy">
+          <p className="hero-eyebrow rise delay-1">{hero.eyebrow[language]}</p>
+          <h1 className="hero-title rise delay-2">{personal_info.name}</h1>
+          <p className="hero-tagline rise delay-3">{hero.tagline[language]}</p>
+          <div className="hero-ctas rise delay-4">
+            <button
+              className="btn btn-primary"
+              onClick={() => scrollToSection("projects")}
+            >
+              {hero.cta_projects[language]}
+            </button>
+            <button
+              className="btn btn-ghost"
+              onClick={() => scrollToSection("contact")}
+            >
+              {hero.cta_contact[language]}
+            </button>
+          </div>
+        </div>
 
-      {/* Hero content */}
-      <div className="hero-content">
-        <h1 className={`hero-title neon-glow fade-in-down`}>
-          {heroContent.title}
-        </h1>
-
-        <p className={`hero-subtitle fade-in-up delay-1`}>
-          {heroContent.subtitle[language]}
-        </p>
-
-        <p className={`hero-description fade-in-up delay-2`}>
-          {heroContent.description[language]}
-        </p>
+        <div className="hero-portrait rise delay-3">
+          <div className="portrait-frame">
+            {hero.portraits.map((image, index) => (
+              <img
+                key={image}
+                src={image}
+                alt={index === 0 ? personal_info.name : ""}
+                className={`portrait-image ${
+                  index === currentImageIndex ? "active" : ""
+                }`}
+                width="480"
+                height="600"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : undefined}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
