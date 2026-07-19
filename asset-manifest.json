@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/quyenbuijs/static/css/main.68effea6.css",
-    "main.js": "/quyenbuijs/static/js/main.35f5bf67.js",
+    "main.css": "/quyenbuijs/static/css/main.507bb725.css",
+    "main.js": "/quyenbuijs/static/js/main.15e3a0c1.js",
     "static/js/453.1c0dd230.chunk.js": "/quyenbuijs/static/js/453.1c0dd230.chunk.js",
     "index.html": "/quyenbuijs/index.html",
-    "main.68effea6.css.map": "/quyenbuijs/static/css/main.68effea6.css.map",
-    "main.35f5bf67.js.map": "/quyenbuijs/static/js/main.35f5bf67.js.map",
+    "main.507bb725.css.map": "/quyenbuijs/static/css/main.507bb725.css.map",
+    "main.15e3a0c1.js.map": "/quyenbuijs/static/js/main.15e3a0c1.js.map",
     "453.1c0dd230.chunk.js.map": "/quyenbuijs/static/js/453.1c0dd230.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.68effea6.css",
-    "static/js/main.35f5bf67.js"
+    "static/css/main.507bb725.css",
+    "static/js/main.15e3a0c1.js"
   ]
 }
