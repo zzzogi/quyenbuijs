@@ -158,6 +158,20 @@ const portfolioData = {
       },
       technologies: ["Police Commands", "Guns", "Laws"],
     },
+    {
+      id: 8,
+      company: "Công ty Cổ phần Tập đoàn Thiết bị xây dựng TP",
+      position: {
+        en: "Digital Transformation Specialist",
+        vi: "Chuyên viên Chuyển đổi số",
+      },
+      duration: "02/2026",
+      description: {
+        en: "After completing my military service, I returned to my normal life and tried applying to a new company for a rather interesting position that I had never tried before.",
+        vi: "Sau khi hoàn thành nghĩa vụ, tôi trở lại với cuộc sống bình thường và apply thử vào một công ty mới với một vị trí khá thú vị mà tôi chưa từng thử bao giờ.",
+      },
+      technologies: ["Business Analytics"],
+    },
   ],
 
   projects: [
@@ -197,7 +211,7 @@ const portfolioData = {
         "PayOS",
       ],
       image: "/quyenbuijs/assets/images/website/website-2.jpg",
-      demo_url: "https://www.kimvinhvuong.com/",
+      demo_url: "https://crispy-fortnight.vercel.app",
       github_url: "https://github.com/zzzogi/crispy-fortnight",
     },
     {
@@ -214,6 +228,43 @@ const portfolioData = {
       image: "/quyenbuijs/assets/images/website/website-3.jpg",
       demo_url: "",
       github_url: "",
+    },
+    {
+      id: 4,
+      title: {
+        en: "Chung Bao x Minh Phuong - Online Wedding Invitation",
+        vi: "Chung Bảo x Minh Phương - Thiếp cưới trực tuyến",
+      },
+      description: {
+        en: "Design and deploy online wedding invitation for lovely couples",
+        vi: "Thiết kế thiệp cưới trực tuyến cho các đôi uyên ương",
+      },
+      technologies: ["React", "Google APIs", "HTML", "CSS", "Photoshop"],
+      image: "/quyenbuijs/assets/images/website/website-4.png",
+      demo_url: "https://chungbaoxmphuong.netlify.app",
+      github_url: "https://github.com/zzzogi/savethedate-twistin-mp",
+    },
+    {
+      id: 5,
+      title: {
+        en: "FIFA Pick'em World Cup 2026 - Football score predition platform",
+        vi: "FIFA Pick'em World Cup 2026 - Website dự đoán tỉ số bóng đá",
+      },
+      description: {
+        en: "Online game for football lovers that want to competitive with other football lovers",
+        vi: "Game trực tuyến cho những ai yêu thích bóng đá và dự đoán tỉ số",
+      },
+      technologies: [
+        "React",
+        "Google APIs",
+        "Supabase",
+        "Google Analytics",
+        "SEO",
+        "Automatic Mailing",
+      ],
+      image: "/quyenbuijs/assets/images/website/website-5.png",
+      demo_url: "https://fifapickem2026.com/",
+      github_url: "https://github.com/zzzogi/fifa-pickem-2026",
     },
   ],
 

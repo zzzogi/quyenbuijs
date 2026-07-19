@@ -22,7 +22,7 @@ const HobbySection = () => {
             <h3 className="hobby-name">{hobby.name[language]}</h3>
             <p className="hobby-description">{hobby.description[language]}</p>
             <p className="hobby-stats">{hobby.stats[language]}</p>
-            <div className="hobby-strip">
+            {/* <div className="hobby-strip">
               {hobby.images.map((image) => (
                 <img
                   key={image}
@@ -33,7 +33,7 @@ const HobbySection = () => {
                   loading="lazy"
                 />
               ))}
-            </div>
+            </div> */}
           </article>
         ))}
       </div>
