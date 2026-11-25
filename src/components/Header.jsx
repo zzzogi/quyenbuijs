@@ -36,7 +36,9 @@ const Header = () => {
       { rootMargin: "-40% 0px -55% 0px" }
     );
 
-    portfolioData.navItems.forEach(({ id }) => {
+    // Observe every section (not only nav items) so the highlight clears
+    // while reading a section that has no nav link
+    ["hero", ...portfolioData.section_order].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });

@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 
 beforeAll(() => {
-  // Plain stubs (not jest.fn) — CRA's resetMocks would wipe mock implementations
+  // Plain stubs (not jest.fn) - CRA's resetMocks would wipe mock implementations
   window.matchMedia = (query) => ({
     matches: false,
     media: query,

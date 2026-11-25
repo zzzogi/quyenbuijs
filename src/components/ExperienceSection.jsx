@@ -50,7 +50,7 @@ const ExperienceSection = ({ index }) => {
         <div className="education-row">
           <p className="education-main">
             <strong>{education.degree[language]}</strong>
-            <span aria-hidden="true"> — </span>
+            <span aria-hidden="true"> - </span>
             {education.school[language]}
           </p>
           <p className="education-meta">

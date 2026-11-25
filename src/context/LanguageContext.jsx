@@ -13,7 +13,7 @@ const getInitialLanguage = () => {
     const stored = localStorage.getItem("language");
     if (LANGS.includes(stored)) return stored;
   } catch {
-    // localStorage can throw in private modes — fall through to default
+    // localStorage can throw in private modes - fall through to default
   }
   return "vi";
 };

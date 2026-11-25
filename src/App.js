@@ -6,6 +6,7 @@ import ExperienceSection from "./components/ExperienceSection";
 import ProjectsSection from "./components/ProjectSection";
 import CertificationsSection from "./components/CertificationsSection";
 import OffHoursSection from "./components/OffHoursSection";
+import GallerySection from "./components/GallerySection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
@@ -49,6 +50,7 @@ const AppContent = () => {
         <ProjectsSection index={n("projects")} />
         <CertificationsSection index={n("certifications")} />
         <OffHoursSection index={n("offhours")} />
+        <GallerySection index={n("gallery")} />
         <ContactSection index={n("contact")} />
       </main>
       <Footer />

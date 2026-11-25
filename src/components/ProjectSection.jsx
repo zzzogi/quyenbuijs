@@ -7,7 +7,7 @@ import Icon from "./Icon";
 import { T } from "./Todo";
 
 // Fake-UI illustration for internal systems that can't be screenshotted.
-// Contains no real data — only generic module names and skeleton rows.
+// Contains no real data - only generic module names and skeleton rows.
 const RinglockIllustration = ({ language }) => {
   const { ui } = portfolioData;
   const nav =
