@@ -29,9 +29,15 @@ const MobileNavigation = ({ isOpen, onClose, language }) => {
       className={`mobile-nav ${isOpen ? "open" : ""}`}
       role="dialog"
       aria-modal="true"
-      aria-label="Navigation menu"
+      aria-label={portfolioData.ui.main_nav[language]}
+      aria-hidden={!isOpen}
     >
-      <button className="mobile-nav-close" onClick={onClose} aria-label="Close menu">
+      <button
+        className="mobile-nav-close"
+        onClick={onClose}
+        aria-label={portfolioData.ui.close_menu[language]}
+        tabIndex={isOpen ? 0 : -1}
+      >
         <Icon name="x" size={24} />
       </button>
       {portfolioData.navItems.map(({ id, label }, i) => (
@@ -39,6 +45,7 @@ const MobileNavigation = ({ isOpen, onClose, language }) => {
           key={id}
           href={`#${id}`}
           className="mobile-nav-link"
+          tabIndex={isOpen ? 0 : -1}
           style={{ transitionDelay: isOpen ? `${100 + i * 50}ms` : "0ms" }}
           onClick={(e) => {
             e.preventDefault();

@@ -59,7 +59,7 @@ const Header = () => {
             quyenbui.js
           </a>
 
-          <nav className="nav-menu" aria-label="Main navigation">
+          <nav className="nav-menu" aria-label={portfolioData.ui.main_nav[language]}>
             {portfolioData.navItems.map(({ id, label }) => (
               <a
                 key={id}
@@ -79,21 +79,23 @@ const Header = () => {
             <button
               className="control-btn lang-btn"
               onClick={() => setLanguage(language === "en" ? "vi" : "en")}
-              aria-label="Toggle language"
+              aria-label={portfolioData.ui.toggle_language[language]}
+              lang={language === "en" ? "vi" : "en"}
             >
               {language === "en" ? "VI" : "EN"}
             </button>
             <button
               className="control-btn"
               onClick={toggleTheme}
-              aria-label="Toggle theme"
+              aria-label={portfolioData.ui.toggle_theme[language]}
             >
               <Icon name={theme === "dark" ? "sun" : "moon"} size={16} />
             </button>
             <button
               className="control-btn mobile-menu-btn"
               onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open menu"
+              aria-label={portfolioData.ui.open_menu[language]}
+              aria-expanded={mobileMenuOpen}
             >
               <Icon name="menu" size={18} />
             </button>

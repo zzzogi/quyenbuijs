@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Icon from "./Icon";
+import { LanguageContext } from "../context/LanguageContext";
+import portfolioData from "../data/pageData";
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +24,8 @@ const BackToTopButton = () => {
     <button
       className={`back-to-top ${isVisible ? "visible" : ""}`}
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      aria-label="Back to top"
+      aria-label={portfolioData.ui.back_to_top[language]}
+      tabIndex={isVisible ? 0 : -1}
     >
       <Icon name="arrow-up" size={18} />
     </button>

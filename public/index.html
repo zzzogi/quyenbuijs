@@ -1,36 +1,82 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<html lang="vi" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0B0C0E" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)" />
+    <script>
+      // Apply the saved/system theme before first paint (no flash)
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t !== "dark" && t !== "light") {
+            t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+    <title>Bùi Viết Quyền — Full-stack Engineer (Next.js, TypeScript) tại Hà Nội</title>
     <meta
       name="description"
-      content="Bùi Viết Quyền — Full Stack Developer specializing in React and Node.js. Projects, experience, and certifications."
+      content="Full-stack Engineer tại Hà Nội. Tôi xây sản phẩm web từ nghiệp vụ đến production với Next.js, TypeScript và Supabase — từ hệ thống nội bộ cho doanh nghiệp đến game dự đoán World Cup hơn 200 người chơi."
     />
+    <link rel="canonical" href="https://zzzogi.github.io/quyenbuijs/" />
+    <meta name="theme-color" content="#0B0C0E" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)" />
+
+    <!-- Open Graph / social -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Bùi Viết Quyền — Full Stack Developer" />
+    <meta property="og:site_name" content="Bùi Viết Quyền" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="Bùi Viết Quyền — Full-stack Engineer (Next.js, TypeScript) tại Hà Nội" />
     <meta
       property="og:description"
-      content="Full Stack Developer specializing in React and Node.js. Projects, experience, and certifications."
+      content="Full-stack Engineer tại Hà Nội. Tôi xây sản phẩm web từ nghiệp vụ đến production với Next.js, TypeScript và Supabase — từ hệ thống nội bộ cho doanh nghiệp đến game dự đoán World Cup hơn 200 người chơi."
     />
-    <meta
-      property="og:image"
-      content="https://zzzogi.github.io/quyenbuijs/assets/images/about/quyenbui.jpg"
-    />
-    <meta property="og:url" content="https://zzzogi.github.io/quyenbuijs" />
+    <meta property="og:url" content="https://zzzogi.github.io/quyenbuijs/" />
+    <meta property="og:image" content="https://zzzogi.github.io/quyenbuijs/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bùi Viết Quyền — Full-stack Engineer · Next.js · Hà Nội" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://zzzogi.github.io/quyenbuijs/og-image.jpg" />
+
+    <!-- Icons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Hero portrait is the LCP element -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="%PUBLIC_URL%/assets/images/hero/portrait-800.webp"
+      imagesrcset="%PUBLIC_URL%/assets/images/hero/portrait-480.webp 480w, %PUBLIC_URL%/assets/images/hero/portrait-800.webp 800w"
+      imagesizes="(max-width: 768px) 260px, 380px"
+      fetchpriority="high"
+    />
+
+    <!-- Fonts load without blocking first render -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <title>Bùi Viết Quyền — Full Stack Developer</title>
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Trang này cần JavaScript để hiển thị. / This site needs JavaScript to run.</noscript>
     <div id="root"></div>
   </body>
 </html>

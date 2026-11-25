@@ -13,6 +13,16 @@ const paths = {
       <circle cx="4" cy="4" r="2" />
     </>
   ),
+  facebook: (
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  ),
+  download: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M12 15V3" />
+    </>
+  ),
   mail: (
     <>
       <rect width="20" height="16" x="2" y="4" rx="2" />

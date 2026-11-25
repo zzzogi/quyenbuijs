@@ -1,435 +1,523 @@
-// Single source of truth for all portfolio content (EN/VI)
+// Single source of truth for all portfolio content.
+// Every user-facing string is { vi, en }. Edit content here — components only render it.
+//
+// Placeholders: any string containing "[CẦN ANH ĐIỀN" is rendered as a highlighted
+// marker on the page (and links using it are disabled). Search for it to find gaps:
+//   grep -rn "CẦN ANH ĐIỀN" src
+
+const IMG = "/quyenbuijs/assets/images";
+
 const portfolioData = {
+  site: {
+    title: {
+      vi: "Bùi Viết Quyền — Full-stack Engineer (Next.js, TypeScript) tại Hà Nội",
+      en: "Bùi Viết Quyền — Full-stack Engineer (Next.js, TypeScript) in Hanoi",
+    },
+    description: {
+      vi: "Full-stack Engineer tại Hà Nội. Tôi xây sản phẩm web từ nghiệp vụ đến production với Next.js, TypeScript và Supabase — từ hệ thống nội bộ cho doanh nghiệp đến game dự đoán World Cup hơn 200 người chơi.",
+      en: "Full-stack engineer in Hanoi building web products from business requirements to production with Next.js, TypeScript and Supabase — from internal systems for companies to a World Cup prediction game with 200+ players.",
+    },
+  },
+
   personal_info: {
     name: "Bùi Viết Quyền",
-    title: "Full Stack Developer",
     email: "quyenbuiviet45@gmail.com",
     phone: "(+84) 0963 436 829",
-  },
-
-  navItems: [
-    { id: "about", label: { en: "About", vi: "Về tôi" } },
-    { id: "experience", label: { en: "Experience", vi: "Kinh nghiệm" } },
-    { id: "projects", label: { en: "Projects", vi: "Dự án" } },
-    { id: "achievements", label: { en: "Achievements", vi: "Thành tựu" } },
-    { id: "contact", label: { en: "Contact", vi: "Liên hệ" } },
-  ],
-
-  hero: {
-    eyebrow: {
-      en: "Full Stack Developer — Hà Nội",
-      vi: "Lập trình viên Full Stack — Hà Nội",
-    },
-    tagline: {
-      en: "I build modern, secure web applications with React and Node.js — where clean engineering meets thoughtful design.",
-      vi: "Tôi xây dựng các ứng dụng web hiện đại, an toàn với React và Node.js — nơi kỹ thuật chỉn chu gặp thiết kế tinh tế.",
-    },
-    cta_projects: { en: "View projects", vi: "Xem dự án" },
-    cta_contact: { en: "Get in touch", vi: "Liên hệ ngay" },
-    portraits: [
-      "/quyenbuijs/assets/images/profile/profile-1.jpg",
-      "/quyenbuijs/assets/images/profile/profile-2.jpg",
-      "/quyenbuijs/assets/images/profile/profile-3.jpg",
-      "/quyenbuijs/assets/images/profile/profile-4.jpg",
-    ],
-  },
-
-  about: {
-    en: "I'm a Full Stack Developer with over 5 years of experience building modern, scalable web applications. I specialize in React on the front end and Node.js on the back end, and I believe great products are about more than clean code — they're about creating meaningful, secure digital experiences that stand strong against tomorrow's challenges.",
-    vi: "Tôi là Full Stack Developer với hơn 5 năm kinh nghiệm xây dựng các ứng dụng web hiện đại, dễ mở rộng. Tôi chuyên về React cho giao diện và Node.js cho máy chủ, và tôi tin rằng một sản phẩm tốt không chỉ cần mã nguồn sạch — nó cần mang lại trải nghiệm số ý nghĩa, an toàn và bền vững trước những thách thức của tương lai.",
-  },
-
-  about_facts: [
-    {
-      label: { en: "Experience", vi: "Kinh nghiệm" },
-      value: { en: "5+ years", vi: "5+ năm" },
-    },
-    {
-      label: { en: "Core stack", vi: "Công nghệ chính" },
-      value: { en: "React · Node.js", vi: "React · Node.js" },
-    },
-    {
-      label: { en: "Focus", vi: "Định hướng" },
-      value: { en: "Cyber security enthusiast", vi: "Đam mê an ninh mạng" },
-    },
-    {
-      label: { en: "Languages", vi: "Ngôn ngữ" },
-      value: { en: "Vietnamese · English", vi: "Tiếng Việt · Tiếng Anh" },
-    },
-  ],
-
-  section_titles: {
-    about: { en: "About", vi: "Về tôi" },
-    experience: { en: "Experience", vi: "Kinh nghiệm" },
-    projects: { en: "Projects", vi: "Dự án" },
-    achievements: {
-      en: "Achievements & Certifications",
-      vi: "Thành tựu & Chứng chỉ",
-    },
-    hobbies: { en: "Hobbies & Interests", vi: "Sở thích & Đam mê" },
-    gallery: { en: "Gallery", vi: "Thư viện ảnh" },
-    contact: { en: "Contact", vi: "Liên hệ" },
-  },
-
-  experience: [
-    {
-      id: 3,
-      company: "THPT Trần Phú - Hoàn Kiếm",
-      position: {
-        en: "Good grades - Well manners",
-        vi: "Học lực: Giỏi - Hạnh kiểm: Tốt",
-      },
-      duration: "2016 - 2019",
-      description: {
-        en: "My highschool",
-        vi: "Ngôi trường cấp 3 của tôi",
-      },
-      technologies: [],
-    },
-    {
-      id: 4,
-      company: "Đại học Kinh tế Quốc dân",
-      position: {
-        en: "Computer Science - GPA 3.1",
-        vi: "Ngành Khoa học máy tính - GPA 3.1",
-      },
-      duration: "2019 - 2023",
-      description: {
-        en: "My university",
-        vi: "Trường đại học của tôi",
-      },
-      technologies: [],
-    },
-    {
-      id: 5,
-      company: "Công ty SETA International",
-      position: {
-        en: "Internship",
-        vi: "Thực tập sinh",
-      },
-      duration: "11/2022 - 02/2023",
-      description: {
-        en: "Intern at SETA International, during this time, I have a chance to participade in local projects, how to work at this company and get use to the company environment.",
-        vi: "Thực tập sinh tại công ty SETA International, trong thời gian thực tập, tôi được tham gia phát triển các website nội bộ, được biết nội quy làm việc và làm quen với văn hoá của của công ty.",
-      },
-      technologies: [
-        "React",
-        "Redux",
-        "Redux Saga",
-        "Typescript",
-        "JavaScript",
-        "MUI",
-        "Nextjs",
-      ],
-    },
-    {
-      id: 6,
-      company: "Công ty SETA International - AI Cycle",
-      position: {
-        en: "Software Developer",
-        vi: "Lâp trình viên",
-      },
-      duration: "02/2023 - 02/2024",
-      description: {
-        en: "After my internship, I was honored to be placed in project AI Cycle by the leadership, here I continued to develop website that evalutes car price, a website for user to label car's parts, and I also build local projects like statistic reporter and employee management website.",
-        vi: "Sau kì thực tập, tôi được ban lãnh đạo tin tưởng sắp xếp vào dự án AI Cycle, tại đây tôi phát triển các trang web định giá xe ô tô, trang web gán nhãn bộ phận xe ô tô, và phát triển các trang web thống kê, trang web quản lý nội bộ.",
-      },
-      technologies: [
-        "React",
-        "Redux",
-        "Redux Saga",
-        "Typescript",
-        "JavaScript",
-        "MUI",
-        "Recharts",
-      ],
-    },
-    {
-      id: 7,
-      company: "Nghĩa vụ Công an - Lực lượng vũ trang",
-      position: {
-        en: "Role: Soldier - Level: Corporal",
-        vi: "Chức vụ: Chiến sĩ - Cấp bậc: Hạ Sĩ",
-      },
-      duration: "02/2024 - 02/2026",
-      description: {
-        en: "After a year working at SETA, I have to pack up and serve in the military, and because I have good papers and a college degree, I was able to participade in the Police Force. This place has hardened my mind, as well as helping me learn discipline in the armed forces.",
-        vi: "Sau khi làm 1 năm tại SETA, tôi phải lên đường phục vụ nghĩa vụ quân sự, do có hồ sơ tốt và bằng đại học nên tôi được tuyển vào Công an nhân dân. Nơi đây đã rèn dũa tôi cứng rắn hơn rất nhiều, cũng như giúp tôi học được tính kỷ luật trong lực lượng vũ trang.",
-      },
-      technologies: ["Police Commands", "Guns", "Laws"],
-    },
-    {
-      id: 8,
-      company: "Công ty Cổ phần Tập đoàn Thiết bị xây dựng TP",
-      position: {
-        en: "Digital Transformation Specialist",
-        vi: "Chuyên viên Chuyển đổi số",
-      },
-      duration: "02/2026",
-      description: {
-        en: "After completing my military service, I returned to my normal life and tried applying to a new company for a rather interesting position that I had never tried before.",
-        vi: "Sau khi hoàn thành nghĩa vụ, tôi trở lại với cuộc sống bình thường và apply thử vào một công ty mới với một vị trí khá thú vị mà tôi chưa từng thử bao giờ.",
-      },
-      technologies: ["Business Analytics"],
-    },
-  ],
-
-  projects: [
-    {
-      id: 1,
-      title: {
-        en: "Forkify - Cooking Recipe Finder",
-        vi: "Forkify - Website tìm kiếm công thức nấu ăn",
-      },
-      description: {
-        en: "A website to help user finding their desire recipe.",
-        vi: "Một trang web giúp người dùng tìm kiếm công thức nấu của món ăn mà họ mong muốn",
-      },
-      technologies: ["HTML", "CSS", "Javascript", "Node.js"],
-      image: "/quyenbuijs/assets/images/website/website-1.jpg",
-      demo_url: "https://forkify-quyenbui.netlify.app/",
-      github_url: "https://github.com/zzzogi/forkify-quyenbui",
-    },
-    {
-      id: 2,
-      title: {
-        en: "Kim Vĩnh Vương - The taste of Kinh Bắc culture delight",
-        vi: "Kim Vĩnh Vương - Tinh hoa đặc sản Kinh Bắc",
-      },
-      description: {
-        en: "E-Commerce website, selling Vietnamese traditional product like chè lam, mứt, kẹo lạc... from the hands of Kim Vinh Vuong.",
-        vi: "Website thương mại điện tử, bán các mặt hàng bánh kẹo truyền thống như: chè lam, mứt, kẹo lạc... của nhà sản xuất Kim Vĩnh Vương.",
-      },
-      technologies: [
-        "Next.js",
-        "Next Auth",
-        "OAuth",
-        "React",
-        "Prisma",
-        "MongoDB",
-        "AWS S3",
-        "PayOS",
-      ],
-      image: "/quyenbuijs/assets/images/website/website-2.jpg",
-      demo_url: "https://crispy-fortnight.vercel.app",
-      github_url: "https://github.com/zzzogi/crispy-fortnight",
-    },
-    {
-      id: 3,
-      title: {
-        en: "Car Evaluate Website - From AI Cycle",
-        vi: "Website định giá xe ô tô - AI Cycle",
-      },
-      description: {
-        en: "Blazing fast tool to evaluate cars from its infomations",
-        vi: "Công cụ để định giá xe ô tô nhanh chóng từ các thông tin xe ô tô của bạn",
-      },
-      technologies: ["React", "React Query", "MUI", "Recharts"],
-      image: "/quyenbuijs/assets/images/website/website-3.jpg",
-      demo_url: "",
-      github_url: "",
-    },
-    {
-      id: 4,
-      title: {
-        en: "Chung Bao x Minh Phuong - Online Wedding Invitation",
-        vi: "Chung Bảo x Minh Phương - Thiếp cưới trực tuyến",
-      },
-      description: {
-        en: "Design and deploy online wedding invitation for lovely couples",
-        vi: "Thiết kế thiệp cưới trực tuyến cho các đôi uyên ương",
-      },
-      technologies: ["React", "Google APIs", "HTML", "CSS", "Photoshop"],
-      image: "/quyenbuijs/assets/images/website/website-4.png",
-      demo_url: "https://chungbaoxmphuong.netlify.app",
-      github_url: "https://github.com/zzzogi/savethedate-twistin-mp",
-    },
-    {
-      id: 5,
-      title: {
-        en: "FIFA Pick'em World Cup 2026 - Football score predition platform",
-        vi: "FIFA Pick'em World Cup 2026 - Website dự đoán tỉ số bóng đá",
-      },
-      description: {
-        en: "Online game for football lovers that want to competitive with other football lovers",
-        vi: "Game trực tuyến cho những ai yêu thích bóng đá và dự đoán tỉ số",
-      },
-      technologies: [
-        "React",
-        "Google APIs",
-        "Supabase",
-        "Google Analytics",
-        "SEO",
-        "Automatic Mailing",
-      ],
-      image: "/quyenbuijs/assets/images/website/website-5.png",
-      demo_url: "https://fifapickem2026.com/",
-      github_url: "https://github.com/zzzogi/fifa-pickem-2026",
-    },
-  ],
-
-  achievements: [
-    {
-      id: 1,
-      title: {
-        en: "Node.js, Express, MongoDB Bootcamp",
-        vi: "Khoá học Node.js, Express, MongoDB nâng cao",
-      },
-      description: {
-        en: "Intermediate level certification for designing website using Node.js, Express, MongoDB",
-        vi: "Chứng chỉ cấp về thiết kế, xây dựng website sử dụng Node.js, Express, MongoDB",
-      },
-      date: "2022",
-      issuer: { en: "Udemy", vi: "Udemy" },
-      certificateImage: "/quyenbuijs/assets/images/certificates/cert-1.jpg",
-      icons: [
-        "/quyenbuijs/assets/images/icons/nodejs.png",
-        "/quyenbuijs/assets/images/icons/express.png",
-        "/quyenbuijs/assets/images/icons/mongo.png",
-      ],
-    },
-    {
-      id: 2,
-      title: {
-        en: "JavaScript Course: From Zero to Expert!",
-        vi: "Khoá học Javascript từ Zero tới Hero!",
-      },
-      description: {
-        en: "Newbie to intermediate level certification for Javascript, built a strong foundation of this language.",
-        vi: "Chứng chỉ cấp về học ngôn ngữ Javascript từ cơ bản tới nâng cao, xây dựng một nền tảng vững chắc của ngôn ngữ này",
-      },
-      date: "2022",
-      issuer: { en: "Udemy", vi: "Udemy" },
-      certificateImage: "/quyenbuijs/assets/images/certificates/cert-2.jpg",
-      icons: ["/quyenbuijs/assets/images/icons/js.png"],
-    },
-    {
-      id: 3,
-      title: {
-        en: "Build Websites with HTML and CSS",
-        vi: "Khoá học về HTML, CSS",
-      },
-      description: {
-        en: "Builing Responsive Real-World with HTML and CSS",
-        vi: "Chứng chỉ cấp cho học viên hoàn thành khoá học xây dựng website responsive sử dụng HTML và CSS",
-      },
-      date: "2022",
-      issuer: { en: "Udemy", vi: "Udemy" },
-      certificateImage: "/quyenbuijs/assets/images/certificates/cert-3.jpg",
-      icons: ["/quyenbuijs/assets/images/icons/html.png"],
-    },
-    {
-      id: 4,
-      title: {
-        en: "IELTS Certificate",
-        vi: "Chứng chỉ IELTS",
-      },
-      description: {
-        en: "International English Language Testing System",
-        vi: "Chứng chỉ IELTS - Hệ thống Kiểm tra Anh ngữ Quốc tế",
-      },
-      date: "2023",
-      issuer: { en: "IDP", vi: "IDP" },
-      certificateImage: "/quyenbuijs/assets/images/certificates/ielts.jpg",
-      icons: ["/quyenbuijs/assets/images/icons/uk.png"],
-    },
-  ],
-
-  hobbies: [
-    {
-      id: 1,
-      name: { en: "Food Lover", vi: "Ăn uống" },
-      icon: "🍕",
-      description: {
-        en: "Eating is my passion, I always want to explore the culinary culture of many places on this earth.",
-        vi: "Ăn uống là niềm đam mê của tôi, tôi luôn muốn khám phá văn hoá ẩm thực của nhiều nơi trên trái đất này.",
-      },
-      stats: { en: "50000+ dishes devoured", vi: "50000+ đĩa cơm đã ăn" },
-      images: [
-        "/quyenbuijs/assets/images/hobbies/food-1.jpg",
-        "/quyenbuijs/assets/images/hobbies/food-2.jpg",
-        "/quyenbuijs/assets/images/hobbies/food-3.jpg",
-      ],
-    },
-    {
-      id: 2,
-      name: { en: "Gaming", vi: "Chơi Game" },
-      icon: "🎮",
-      description: {
-        en: "Strategy games and RPGs are my favorites. Love the storytelling and problem-solving aspects.",
-        vi: "Game chiến thuật và RPG là sở thích. Yêu thích yếu tố kể chuyện và giải quyết vấn đề.",
-      },
-      stats: { en: "1000+ hours played", vi: "1000+ giờ chơi" },
-      images: [
-        "/quyenbuijs/assets/images/hobbies/gaming-1.png",
-        "/quyenbuijs/assets/images/hobbies/gaming-2.jpg",
-        "/quyenbuijs/assets/images/hobbies/gaming-3.jpg",
-      ],
-    },
-    {
-      id: 5,
-      name: { en: "Coffee Brewing", vi: "Pha Cà Phê" },
-      icon: "☕",
-      description: {
-        en: "Experimenting with different brewing methods and beans. The perfect cup is an art form.",
-        vi: "Thử nghiệm nhiều phương pháp pha và loại hạt khác nhau. Ly cà phê hoàn hảo là một nghệ thuật.",
-      },
-      stats: { en: "Daily ritual", vi: "Nghi thức hàng ngày" },
-      images: [
-        "/quyenbuijs/assets/images/hobbies/coffee-1.jpg",
-        "/quyenbuijs/assets/images/hobbies/coffee-2.jpg",
-        "/quyenbuijs/assets/images/hobbies/coffee-3.jpg",
-      ],
-    },
-    {
-      id: 6,
-      name: { en: "Travel", vi: "Du Lịch" },
-      icon: "✈️",
-      description: {
-        en: "Exploring new cultures and cuisines. Every trip is a new adventure and learning experience.",
-        vi: "Khám phá văn hóa và ẩm thực mới. Mỗi chuyến đi là một cuộc phiêu lưu và trải nghiệm học tập.",
-      },
-      stats: { en: "15+ countries visited", vi: "15+ quốc gia đã đến" },
-      images: [
-        "/quyenbuijs/assets/images/hobbies/travel-1.jpg",
-        "/quyenbuijs/assets/images/hobbies/travel-2.jpg",
-        "/quyenbuijs/assets/images/hobbies/travel-3.jpg",
-      ],
-    },
-  ],
-
-  hobbies_subtitle: {
-    en: "When I'm not coding, you'll find me doing these",
-    vi: "Khi không code, bạn sẽ thấy tôi làm những điều này",
-  },
-
-  fun_fact: {
-    en: "Fun fact: I believe in work-life balance and these hobbies keep me creative and inspired!",
-    vi: "Điều thú vị: Tôi tin vào cân bằng công việc-cuộc sống và những sở thích này giúp tôi sáng tạo và đầy cảm hứng!",
-  },
-
-  gallery_images: [
-    "/quyenbuijs/assets/images/gallery/gallery-1.jpg",
-    "/quyenbuijs/assets/images/gallery/gallery-2.jpg",
-    "/quyenbuijs/assets/images/gallery/gallery-3.jpg",
-    "/quyenbuijs/assets/images/gallery/gallery-4.jpg",
-    "/quyenbuijs/assets/images/gallery/gallery-5.jpg",
-    "/quyenbuijs/assets/images/gallery/gallery-6.jpg",
-    "/quyenbuijs/assets/images/gallery/gallery-7.jpg",
-  ],
-
-  contact: {
-    heading: { en: "Let's work together", vi: "Cùng hợp tác nhé" },
-    pitch: {
-      en: "Have a project in mind, or just want to say hello? My inbox is always open.",
-      vi: "Bạn có dự án cần thực hiện, hay chỉ muốn chào hỏi? Hộp thư của tôi luôn rộng mở.",
-    },
+    // Toggle the "available for freelance" badge in the hero
+    available_for_freelance: true,
+    // Put the PDF in public/ (e.g. public/cv/bui-viet-quyen-cv.pdf) and set
+    // "/quyenbuijs/cv/bui-viet-quyen-cv.pdf" here.
+    cv_url: "[CẦN ANH ĐIỀN: link file CV PDF]",
   },
 
   social_links: {
     github: "https://github.com/zzzogi",
     linkedin: "https://www.linkedin.com/in/buivietquyen",
+    facebook: "[CẦN ANH ĐIỀN: link Facebook]",
     email: "mailto:quyenbuiviet45@gmail.com",
+  },
+
+  // Small UI strings shared across components
+  ui: {
+    download_cv: { vi: "Tải CV", en: "Download CV" },
+    view_certificate: { vi: "Xem chứng chỉ", en: "View certificate" },
+    close: { vi: "Đóng", en: "Close" },
+    open_menu: { vi: "Mở menu", en: "Open menu" },
+    close_menu: { vi: "Đóng menu", en: "Close menu" },
+    toggle_language: { vi: "Switch to English", en: "Chuyển sang tiếng Việt" },
+    toggle_theme: { vi: "Đổi giao diện sáng/tối", en: "Toggle light/dark theme" },
+    back_to_top: { vi: "Lên đầu trang", en: "Back to top" },
+    main_nav: { vi: "Điều hướng chính", en: "Main navigation" },
+    problem: { vi: "Vấn đề", en: "Problem" },
+    work: { vi: "Tôi đã làm", en: "What I built" },
+    result: { vi: "Kết quả", en: "Outcome" },
+    other_projects: { vi: "Dự án nhỏ khác", en: "Smaller projects" },
+    education: { vi: "Học vấn", en: "Education" },
+    courses: { vi: "Khoá học", en: "Courses" },
+    illustration: { vi: "Minh hoạ — không phải dữ liệu thật", en: "Illustration — not real data" },
+  },
+
+  navItems: [
+    { id: "about", label: { vi: "Về tôi", en: "About" } },
+    { id: "experience", label: { vi: "Kinh nghiệm", en: "Experience" } },
+    { id: "projects", label: { vi: "Dự án", en: "Projects" } },
+    { id: "certifications", label: { vi: "Chứng chỉ", en: "Certifications" } },
+    { id: "contact", label: { vi: "Liên hệ", en: "Contact" } },
+  ],
+
+  section_titles: {
+    about: { vi: "Về tôi", en: "About" },
+    experience: { vi: "Kinh nghiệm", en: "Experience" },
+    projects: { vi: "Dự án", en: "Projects" },
+    certifications: { vi: "Chứng chỉ", en: "Certifications" },
+    offhours: { vi: "Ngoài giờ code", en: "Off the clock" },
+    contact: { vi: "Liên hệ", en: "Contact" },
+  },
+
+  hero: {
+    eyebrow: {
+      vi: "Full-stack Engineer · Next.js · Hà Nội",
+      en: "Full-stack Engineer · Next.js · Hanoi",
+    },
+    tagline: {
+      vi: "Tôi xây sản phẩm web từ nghiệp vụ đến production — từ hệ thống nội bộ cho doanh nghiệp đến game dự đoán World Cup với hơn 200 người chơi.",
+      en: "I build web products from business requirements to production — from internal systems for companies to a World Cup prediction game with 200+ players.",
+    },
+    badge: { vi: "Đang nhận dự án freelance", en: "Available for freelance work" },
+    cta_projects: { vi: "Xem dự án", en: "View projects" },
+    cta_contact: { vi: "Liên hệ", en: "Get in touch" },
+    portrait: {
+      src: `${IMG}/hero/portrait-800.webp`,
+      srcSet: `${IMG}/hero/portrait-480.webp 480w, ${IMG}/hero/portrait-800.webp 800w`,
+      width: 800,
+      height: 1000,
+      alt: {
+        vi: "Chân dung Bùi Viết Quyền trên du thuyền ở vịnh Hạ Long",
+        en: "Portrait of Bùi Viết Quyền on a boat in Hạ Long Bay",
+      },
+    },
+  },
+
+  about: {
+    text: {
+      vi: "Tôi là Full-stack Developer, tốt nghiệp Khoa học máy tính tại ĐH Kinh tế Quốc dân. Tôi bắt đầu đi làm từ 2022 tại SETA International với React/Redux/TypeScript, sau đó hoàn thành 2 năm nghĩa vụ trong lực lượng Công an nhân dân. Hiện tôi làm freelance chuyển đổi số cho doanh nghiệp: khảo sát quy trình, đánh giá giải pháp, rồi tự build hệ thống bằng Next.js, Prisma và Supabase. Ngoài giờ, tôi thích làm những sản phẩm web nhỏ, hữu ích và chia sẻ miễn phí.",
+      en: "I'm a full-stack developer with a Computer Science degree from the National Economics University in Hanoi. I started my career in 2022 at SETA International, working with React, Redux and TypeScript, then completed two years of mandatory public security service. Today I freelance on digital transformation for businesses: I map how teams actually work, weigh the options, then build the system myself with Next.js, Prisma and Supabase. In my spare time I make small, useful web tools and give them away for free.",
+    },
+    facts: [
+      {
+        label: { vi: "Đi làm từ", en: "Working since" },
+        value: { vi: "2022", en: "2022" },
+      },
+      {
+        label: { vi: "Stack chính", en: "Core stack" },
+        value: {
+          vi: "Next.js · TypeScript · Supabase/PostgreSQL · Prisma",
+          en: "Next.js · TypeScript · Supabase/PostgreSQL · Prisma",
+        },
+      },
+      {
+        label: { vi: "Đang học", en: "Learning" },
+        value: { vi: "Go (backend)", en: "Go (backend)" },
+      },
+      {
+        label: { vi: "Định hướng", en: "Focus" },
+        value: {
+          vi: "[CẦN ANH ĐIỀN: định hướng nghề nghiệp]",
+          en: "[CẦN ANH ĐIỀN: định hướng nghề nghiệp]",
+        },
+      },
+      {
+        label: { vi: "Ngôn ngữ", en: "Languages" },
+        value: {
+          vi: "Tiếng Việt · Tiếng Anh (IELTS 6.5)",
+          en: "Vietnamese · English (IELTS 6.5)",
+        },
+      },
+    ],
+  },
+
+  // Newest first
+  experience: [
+    {
+      id: "tp",
+      company: {
+        vi: "Công ty CP Tập đoàn Thiết bị xây dựng TP",
+        en: "Công ty CP Tập đoàn Thiết bị xây dựng TP",
+      },
+      position: {
+        vi: "Chuyên viên Chuyển đổi số → Freelance Developer & BA (từ [CẦN ANH ĐIỀN: tháng/năm])",
+        en: "Digital Transformation Specialist → Freelance Developer & BA (since [CẦN ANH ĐIỀN: tháng/năm])",
+      },
+      duration: { vi: "02/2026 – nay", en: "02/2026 – present" },
+      bullets: {
+        vi: [
+          "Khảo sát quy trình 4 phòng ban (Kinh doanh, Kế toán, Hành chính–Nhân sự, Kho) bằng hệ thống form Google Apps Script cấu hình hoá.",
+          "Đánh giá 2 nhà cung cấp ERP (Workit, CMC): phân tích báo giá, lập bảng yêu cầu; đề xuất tự xây công cụ nội bộ thay vì mua ERP.",
+          "Xây hệ thống nội bộ Internal Ringlock TP (Next.js + Prisma + Supabase, Vercel): quản lý tài liệu phân quyền theo vai trò, LMS nội bộ TP Academy, trang quản trị đồng bộ dữ liệu MISA.",
+          "Module tính hoá đơn tự động: đọc file Excel xuất từ MISA, tính tiền thuê thiết bị và xuất bộ hồ sơ thanh toán đúng mẫu kế toán, thay cho quy trình Excel thủ công.",
+        ],
+        en: [
+          "Mapped workflows across 4 departments (Sales, Accounting, HR & Admin, Warehouse) using a configurable Google Apps Script form system.",
+          "Evaluated 2 ERP vendors (Workit, CMC): broke down their quotes and wrote the requirements matrix, then recommended building in-house tools instead of buying an ERP.",
+          "Built Internal Ringlock TP (Next.js + Prisma + Supabase on Vercel): role-based document management, the TP Academy internal LMS, and an admin panel that syncs data from MISA.",
+          "Automated invoicing: reads Excel exports from MISA, calculates equipment rental charges and generates the full payment pack in the accounting team's template — replacing a manual Excel process.",
+        ],
+      },
+      technologies: ["Next.js", "TypeScript", "Prisma", "Supabase", "Business Analysis", "MISA"],
+    },
+    {
+      id: "police",
+      company: {
+        vi: "Nghĩa vụ Công an nhân dân",
+        en: "Mandatory public security service",
+      },
+      position: null,
+      duration: { vi: "02/2024 – 02/2026", en: "02/2024 – 02/2026" },
+      bullets: {
+        vi: [
+          "Hoàn thành 2 năm nghĩa vụ (Chiến sĩ, Hạ sĩ).",
+          "Rèn tính kỷ luật và tinh thần trách nhiệm.",
+          "Trong thời gian này vẫn duy trì lập trình: làm website bán hàng cho cơ sở đặc sản Kim Vĩnh Vương và thiệp cưới online.",
+        ],
+        en: [
+          "Completed two years of service (Private, then Corporal).",
+          "Built discipline and a strong sense of responsibility.",
+          "Kept coding on the side: shipped an online store for Kim Vĩnh Vương, a regional specialty food maker, and an online wedding invitation.",
+        ],
+      },
+      technologies: [],
+    },
+    {
+      id: "seta-aicycle",
+      company: {
+        vi: "SETA International — AI Cycle",
+        en: "SETA International — AI Cycle",
+      },
+      position: { vi: "Lập trình viên", en: "Software Developer" },
+      duration: { vi: "02/2023 – 02/2024", en: "02/2023 – 02/2024" },
+      bullets: {
+        vi: [
+          "Phát triển front-end web định giá xe ô tô bằng AI.",
+          "Xây trang web gán nhãn bộ phận xe ô tô.",
+          "Phát triển các trang thống kê báo cáo và trang quản lý nhân sự nội bộ.",
+          "[CẦN ANH ĐIỀN: số liệu nếu có, vd. số người dùng / số ảnh được gán nhãn]",
+        ],
+        en: [
+          "Built the front end of an AI-powered car valuation web app.",
+          "Built a web tool for labeling car parts.",
+          "Built internal reporting dashboards and an employee management site.",
+          "[CẦN ANH ĐIỀN: số liệu nếu có, vd. số người dùng / số ảnh được gán nhãn]",
+        ],
+      },
+      technologies: ["React", "Redux", "Redux Saga", "TypeScript", "MUI", "Recharts"],
+    },
+    {
+      id: "seta-intern",
+      company: { vi: "SETA International", en: "SETA International" },
+      position: { vi: "Thực tập sinh", en: "Intern" },
+      duration: { vi: "11/2022 – 02/2023", en: "11/2022 – 02/2023" },
+      bullets: {
+        vi: [
+          "Tham gia phát triển các website nội bộ của công ty với React, Redux Saga và TypeScript.",
+          "Làm quen quy trình làm việc nhóm và văn hoá công ty, sau đó được xếp vào dự án AI Cycle với vai trò lập trình viên chính thức.",
+          "[CẦN ANH ĐIỀN: số liệu nếu có]",
+        ],
+        en: [
+          "Contributed to the company's internal web apps with React, Redux Saga and TypeScript.",
+          "Got up to speed on the team's workflow and culture, then moved onto the AI Cycle project as a full-time developer.",
+          "[CẦN ANH ĐIỀN: số liệu nếu có]",
+        ],
+      },
+      technologies: ["React", "Redux", "Redux Saga", "TypeScript", "MUI", "Next.js"],
+    },
+  ],
+
+  education: {
+    degree: {
+      vi: "Cử nhân Khoa học máy tính",
+      en: "B.Sc. in Computer Science",
+    },
+    school: {
+      vi: "ĐH Kinh tế Quốc dân",
+      en: "National Economics University",
+    },
+    duration: "2019 – 2023",
+    note: { vi: "GPA 3.1", en: "GPA 3.1" },
+  },
+
+  // Ordered by strength. `featured` cards render full-width with metrics.
+  projects: [
+    {
+      id: "fifa",
+      featured: true,
+      kind: { vi: "Sản phẩm cá nhân", en: "Personal product" },
+      title: { vi: "FIFA Pick'em World Cup 2026", en: "FIFA Pick'em World Cup 2026" },
+      image: {
+        src: `${IMG}/projects/fifa.webp`,
+        width: 1280,
+        height: 611,
+        alt: {
+          vi: "Màn hình dự đoán tỉ số của FIFA Pick'em với thứ hạng, điểm và độ chính xác của người chơi",
+          en: "FIFA Pick'em prediction screen showing a player's rank, points and accuracy",
+        },
+      },
+      problem: {
+        vi: "Một sân chơi dự đoán tỉ số World Cup 2026 cho người hâm mộ: điểm được tính tự động, có bảng xếp hạng và đủ lý do để người chơi quay lại mỗi ngày.",
+        en: "A score prediction game for World Cup 2026 fans — automatic scoring, live leaderboards, and enough reasons for players to come back every day.",
+      },
+      work: {
+        vi: [
+          "Hệ thống 18 thành tựu với 4 cấp độ hiếm, cùng streak, bảng đấu và bảng xếp hạng.",
+          "Cron tự đồng bộ kết quả trận đấu và tính điểm theo từng người dùng.",
+          "Email tổng kết hằng ngày gửi qua Brevo.",
+          "GA4 chạy cùng Content Security Policy dùng nonce.",
+        ],
+        en: [
+          "An 18-achievement system across 4 rarity tiers, plus streaks, group tables and leaderboards.",
+          "Cron jobs that sync match results and score every player's picks individually.",
+          "Daily recap emails sent through Brevo.",
+          "GA4 running under a nonce-based Content Security Policy.",
+        ],
+      },
+      metrics: [
+        { value: { vi: "200+", en: "200+" }, label: { vi: "người chơi đăng ký", en: "registered players" } },
+        { value: { vi: "~100", en: "~100" }, label: { vi: "người dùng hoạt động/tháng lúc cao điểm", en: "monthly active users at peak" } },
+        { value: { vi: "Giải thật", en: "Real prizes" }, label: { vi: "đã trao cho người chơi", en: "awarded to winning players" } },
+      ],
+      technologies: ["Next.js", "TypeScript", "Supabase", "Prisma", "NextAuth", "React Query", "Tailwind CSS", "Brevo", "Cron jobs", "GA4", "SEO"],
+      links: [
+        { label: "fifapickem2026.com", url: "https://fifapickem2026.com/" },
+        { label: "GitHub", url: "https://github.com/zzzogi/fifa-pickem-2026" },
+      ],
+    },
+    {
+      id: "ringlock",
+      featured: true,
+      kind: { vi: "Dự án doanh nghiệp · Case study", en: "Client work · Case study" },
+      title: { vi: "Internal Ringlock TP", en: "Internal Ringlock TP" },
+      // No real screenshot (internal system) — renders an illustration with fake UI.
+      // To use a real screenshot, add an `image` object with mock/blurred data only.
+      illustration: "ringlock",
+      problem: {
+        vi: "Doanh nghiệp thiết bị xây dựng cần số hoá quy trình của 4 phòng ban và phải chọn giữa mua ERP hay tự xây. Khâu tính tiền thuê thiết bị vẫn làm thủ công trên Excel.",
+        en: "A construction equipment company needed to digitize workflows across four departments and had to choose between buying an ERP and building its own tools. Equipment rental billing was still done by hand in Excel.",
+      },
+      work: {
+        vi: [
+          "Khảo sát quy trình Kinh doanh, Kế toán, Hành chính–Nhân sự và Kho bằng hệ thống form Google Apps Script cấu hình hoá.",
+          "Phân tích báo giá, lập bảng yêu cầu cho 2 nhà cung cấp ERP (Workit, CMC) và đề xuất tự xây công cụ nội bộ thay vì mua ERP.",
+          "Xây hệ thống trên Next.js + Prisma + Supabase (Vercel): quản lý tài liệu phân quyền theo vai trò, LMS nội bộ TP Academy, trang quản trị đồng bộ dữ liệu MISA.",
+          "Module hoá đơn: đọc file Excel xuất từ MISA, tính tiền thuê thiết bị và xuất bộ hồ sơ thanh toán đúng mẫu kế toán.",
+        ],
+        en: [
+          "Mapped Sales, Accounting, HR & Admin and Warehouse workflows with a configurable Google Apps Script form system.",
+          "Broke down quotes and wrote the requirements matrix for two ERP vendors (Workit, CMC), then recommended building in-house tools instead.",
+          "Built the platform on Next.js + Prisma + Supabase (Vercel): role-based document management, the TP Academy internal LMS, and an admin panel that syncs MISA data.",
+          "Invoicing module: reads MISA Excel exports, calculates equipment rental charges and generates the payment pack in the accounting team's template.",
+        ],
+      },
+      metrics: [
+        { value: { vi: "4", en: "4" }, label: { vi: "phòng ban được khảo sát quy trình", en: "departments' workflows mapped" } },
+        { value: { vi: "2", en: "2" }, label: { vi: "nhà cung cấp ERP được đánh giá", en: "ERP vendors evaluated" } },
+        { value: { vi: "Tự động", en: "Automated" }, label: { vi: "tính hoá đơn thuê thiết bị, thay cho Excel thủ công", en: "rental invoicing, replacing manual Excel work" } },
+        {
+          value: { vi: "[CẦN ANH ĐIỀN]", en: "[CẦN ANH ĐIỀN]" },
+          label: { vi: "số liệu tác động, vd. giờ tiết kiệm mỗi kỳ / số người dùng nội bộ", en: "impact metric, e.g. hours saved per cycle / internal users" },
+        },
+      ],
+      technologies: ["Next.js", "TypeScript", "Prisma", "Supabase", "Vercel", "Google Apps Script", "MISA"],
+      links: [],
+      note: { vi: "Hệ thống nội bộ — không có demo công khai", en: "Internal system — no public demo" },
+    },
+    {
+      id: "tax-tools",
+      kind: { vi: "Sản phẩm cá nhân", en: "Personal products" },
+      title: { vi: "Thuế Gọn & GigTaxMath", en: "Thuế Gọn & GigTaxMath" },
+      image: {
+        src: `${IMG}/projects/tax-tools.webp`,
+        width: 1280,
+        height: 760,
+        alt: {
+          vi: "Trang chủ Thuế Gọn và GigTaxMath đặt chồng lên nhau",
+          en: "The Thuế Gọn and GigTaxMath home pages, overlapping",
+        },
+      },
+      problem: {
+        vi: "Hộ kinh doanh ở Việt Nam và người làm gig ở Mỹ đều cần biết nhanh mình phải nộp bao nhiêu thuế mà không phải tự đọc văn bản luật.",
+        en: "Household businesses in Vietnam and gig workers in the US both need a quick answer to “how much tax do I owe?” — without reading the tax code.",
+      },
+      work: {
+        vi: "Hai web công cụ tính thuế miễn phí, không cần đăng ký: Thuế Gọn cho hộ kinh doanh Việt Nam và GigTaxMath cho tài xế, shipper làm gig ở Mỹ. Cả hai chạy trên Cloudflare.",
+        en: "Two free, no-sign-up tax calculators: Thuế Gọn for Vietnamese household businesses and GigTaxMath for US rideshare and delivery drivers. Both run on Cloudflare.",
+      },
+      result: {
+        vi: "[CẦN ANH ĐIỀN: số liệu, vd. lượt truy cập/tháng]",
+        en: "[CẦN ANH ĐIỀN: số liệu, vd. lượt truy cập/tháng]",
+      },
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vitest", "Cloudflare"],
+      links: [
+        { label: "thuegon.com", url: "https://thuegon.com/" },
+        { label: "gigtaxmath.com", url: "https://gigtaxmath.com/" },
+      ],
+    },
+    {
+      id: "kim-vinh-vuong",
+      kind: { vi: "Dự án khách hàng", en: "Client project" },
+      title: {
+        vi: "Kim Vĩnh Vương — Tinh hoa đặc sản Kinh Bắc",
+        en: "Kim Vĩnh Vương — Kinh Bắc specialty sweets",
+      },
+      image: {
+        src: `${IMG}/projects/kim-vinh-vuong.webp`,
+        width: 1280,
+        height: 613,
+        alt: {
+          vi: "Trang chủ Kim Vĩnh Vương với các hũ chè lam",
+          en: "Kim Vĩnh Vương home page featuring jars of chè lam",
+        },
+      },
+      problem: {
+        vi: "Cơ sở sản xuất bánh kẹo truyền thống (chè lam, mứt, kẹo lạc) cần một kênh bán hàng online có thanh toán.",
+        en: "A traditional confectionery maker (chè lam, candied fruit, peanut brittle) needed an online store that could take payments.",
+      },
+      work: {
+        vi: "Xây website thương mại điện tử: danh mục sản phẩm, đăng nhập OAuth, giỏ hàng và thanh toán qua PayOS, ảnh sản phẩm lưu trên AWS S3.",
+        en: "Built the store end to end: product catalog, OAuth sign-in, cart and checkout via PayOS, with product images on AWS S3.",
+      },
+      result: {
+        vi: "Website chạy thật cho khách hàng, có thanh toán online qua PayOS.",
+        en: "Live for a real client, taking online payments through PayOS.",
+      },
+      technologies: ["Next.js", "NextAuth", "OAuth", "React", "Prisma", "MongoDB", "AWS S3", "PayOS"],
+      links: [
+        { label: "Demo", url: "https://crispy-fortnight.vercel.app" },
+        { label: "GitHub", url: "https://github.com/zzzogi/crispy-fortnight" },
+      ],
+    },
+    {
+      id: "aicycle",
+      kind: { vi: "Dự án tại công ty · SETA International", en: "Company project · SETA International" },
+      title: { vi: "Định giá xe ô tô — AI Cycle", en: "Car valuation — AI Cycle" },
+      image: {
+        src: `${IMG}/projects/aicycle.webp`,
+        width: 1280,
+        height: 608,
+        alt: {
+          vi: "Form định giá ô tô của AI Cycle",
+          en: "AI Cycle's car valuation form",
+        },
+      },
+      problem: {
+        vi: "Chủ xe cần biết nhanh giá trị chiếc xe của mình chỉ từ thông tin xe.",
+        en: "Car owners want a fast valuation from nothing more than their vehicle's details.",
+      },
+      work: {
+        vi: "Phát triển front-end cho web định giá xe bằng AI: form thông tin xe, tải ảnh đăng kiểm để tự điền, trang kết quả kèm biểu đồ.",
+        en: "Built the front end of an AI car valuation app: the vehicle details form, registration-photo upload for auto-fill, and a results view with charts.",
+      },
+      result: {
+        vi: "[CẦN ANH ĐIỀN: số liệu nếu có]",
+        en: "[CẦN ANH ĐIỀN: số liệu nếu có]",
+      },
+      technologies: ["React", "React Query", "MUI", "Recharts"],
+      links: [],
+    },
+  ],
+
+  other_projects: [
+    {
+      title: { vi: "Thiệp cưới online", en: "Online wedding invitation" },
+      url: "https://chungbaoxmphuong.netlify.app",
+    },
+  ],
+
+  certifications: {
+    featured: {
+      title: { vi: "IELTS Academic", en: "IELTS Academic" },
+      score: "Overall 6.5 · Speaking 7.0",
+      issuer: "IDP",
+      date: "2023",
+      image: `${IMG}/certificates/ielts.webp`,
+      image_width: 1200,
+      image_height: 1700,
+    },
+    courses: [
+      {
+        title: "The Complete JavaScript Course 2022: From Zero to Expert!",
+        issuer: "Udemy",
+        date: "2022",
+        url: "https://ude.my/UC-03cdea3a-ab6f-4dec-ab4c-57038efbce21",
+      },
+      {
+        title: "Build Responsive Real-World Websites with HTML and CSS",
+        issuer: "Udemy",
+        date: "2022",
+        url: "https://ude.my/UC-0622e8a1-8af2-41af-aaf7-2a9bf1b50ebe",
+      },
+      {
+        title: "Node.js, Express, MongoDB Bootcamp",
+        issuer: "Udemy",
+        date: "2022",
+        url: "[CẦN ANH ĐIỀN: link chứng chỉ Udemy Node.js]",
+      },
+      {
+        title: "Go — Backend Developer Path",
+        issuer: "Boot.dev",
+        date: "",
+        url: "[CẦN ANH ĐIỀN: link chứng nhận Boot.dev]",
+      },
+    ],
+  },
+
+  hobbies: [
+    { icon: "🍜", name: { vi: "Ăn uống", en: "Food" } },
+    { icon: "🎮", name: { vi: "Game chiến thuật / RPG", en: "Strategy games & RPGs" } },
+    { icon: "☕", name: { vi: "Pha cà phê", en: "Coffee brewing" } },
+    { icon: "✈️", name: { vi: "Du lịch", en: "Travel" } },
+  ],
+
+  offhours_subtitle: {
+    vi: "Khi không code, bạn sẽ thấy tôi làm những điều này.",
+    en: "When I'm away from the keyboard, this is where you'll find me.",
+  },
+
+  gallery: [
+    {
+      src: `${IMG}/gallery/gallery-1.webp`,
+      alt: { vi: "Quyền mặc vest, cầm micro trên sân khấu một sự kiện", en: "Quyền in a tuxedo, holding a mic on stage at an event" },
+    },
+    {
+      src: `${IMG}/gallery/gallery-5.webp`,
+      alt: { vi: "Quyền chụp cùng bạn trước toà nhà Trường Đại học Kinh tế Quốc dân", en: "Quyền and a friend outside the National Economics University building" },
+    },
+    {
+      src: `${IMG}/gallery/gallery-4.webp`,
+      alt: { vi: "Quyền ngồi làm việc bên laptop dán sticker, cạnh một chú mèo", en: "Quyền working on a sticker-covered laptop, with a cat keeping watch" },
+    },
+    {
+      src: `${IMG}/gallery/gallery-3.webp`,
+      alt: { vi: "Quyền đội mũ cao bồi, nâng ly trong một quán bar", en: "Quyền in a cowboy hat, raising a glass at a bar" },
+    },
+    {
+      src: `${IMG}/gallery/gallery-6.webp`,
+      alt: { vi: "Quyền mặc quân phục Công an, cầm chùm bóng bay", en: "Quyền in police uniform, holding a bunch of balloons" },
+    },
+    {
+      src: `${IMG}/gallery/gallery-2.webp`,
+      alt: { vi: "Quyền nhận hoa chúc mừng tại văn phòng", en: "Quyền receiving flowers at an office celebration" },
+    },
+  ],
+
+  contact: {
+    heading: { vi: "Cùng hợp tác nhé", en: "Let's work together" },
+    pitch: {
+      vi: "Bạn có dự án cần thực hiện, hay chỉ muốn chào hỏi? Hộp thư của tôi luôn rộng mở.",
+      en: "Have a project in mind, or just want to say hello? My inbox is always open.",
+    },
+    availability: {
+      vi: "Đang nhận: website / landing page cho doanh nghiệp nhỏ, dự án freelance.",
+      en: "Open to: websites and landing pages for small businesses, plus freelance projects.",
+    },
   },
 };
 

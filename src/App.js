@@ -4,9 +4,8 @@ import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import ExperienceSection from "./components/ExperienceSection";
 import ProjectsSection from "./components/ProjectSection";
-import AchievementsSection from "./components/AchievementsSection";
-import HobbySection from "./components/HobbySection";
-import GallerySection from "./components/GallerySection";
+import CertificationsSection from "./components/CertificationsSection";
+import OffHoursSection from "./components/OffHoursSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
@@ -40,13 +39,12 @@ const AppContent = () => {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <AchievementsSection />
-        <HobbySection />
-        <GallerySection />
-        <ContactSection />
+        <AboutSection index={1} />
+        <ExperienceSection index={2} />
+        <ProjectsSection index={3} />
+        <CertificationsSection index={4} />
+        <OffHoursSection index={5} />
+        <ContactSection index={6} />
       </main>
       <Footer />
       <BackToTopButton />

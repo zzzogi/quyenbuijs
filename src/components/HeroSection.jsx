@@ -1,59 +1,73 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import portfolioData from "../data/pageData";
 import { scrollToSection } from "./Header";
+import { MaybeLink } from "./Todo";
+import Icon from "./Icon";
 
 const HeroSection = () => {
   const { language } = useContext(LanguageContext);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { hero, personal_info } = portfolioData;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % hero.portraits.length);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, [hero.portraits.length]);
+  const { hero, personal_info, ui } = portfolioData;
+  const { portrait } = hero;
 
   return (
     <section id="hero" className="hero-section">
       <div className="container hero-inner">
         <div className="hero-copy">
+          {personal_info.available_for_freelance && (
+            <p className="hero-badge rise delay-1">
+              <span className="hero-badge-dot" aria-hidden="true" />
+              {hero.badge[language]}
+            </p>
+          )}
           <p className="hero-eyebrow rise delay-1">{hero.eyebrow[language]}</p>
           <h1 className="hero-title rise delay-2">{personal_info.name}</h1>
           <p className="hero-tagline rise delay-3">{hero.tagline[language]}</p>
           <div className="hero-ctas rise delay-4">
-            <button
+            <a
+              href="#projects"
               className="btn btn-primary"
-              onClick={() => scrollToSection("projects")}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("projects");
+              }}
             >
               {hero.cta_projects[language]}
-            </button>
-            <button
+            </a>
+            <MaybeLink
+              href={personal_info.cv_url}
               className="btn btn-ghost"
-              onClick={() => scrollToSection("contact")}
+              external
+            >
+              <Icon name="download" size={16} />
+              {ui.download_cv[language]}
+            </MaybeLink>
+            <a
+              href="#contact"
+              className="btn btn-text"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("contact");
+              }}
             >
               {hero.cta_contact[language]}
-            </button>
+            </a>
           </div>
         </div>
 
-        <div className="hero-portrait rise delay-3">
+        <div className="hero-portrait">
           <div className="portrait-frame">
-            {hero.portraits.map((image, index) => (
-              <img
-                key={image}
-                src={image}
-                alt={index === 0 ? personal_info.name : ""}
-                className={`portrait-image ${
-                  index === currentImageIndex ? "active" : ""
-                }`}
-                width="480"
-                height="600"
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : undefined}
-              />
-            ))}
+            <img
+              src={portrait.src}
+              srcSet={portrait.srcSet}
+              sizes="(max-width: 768px) 260px, 380px"
+              alt={portrait.alt[language]}
+              className="portrait-image"
+              width={portrait.width}
+              height={portrait.height}
+              fetchPriority="high"
+              decoding="async"
+            />
           </div>
         </div>
       </div>
