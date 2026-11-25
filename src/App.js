@@ -9,8 +9,13 @@ import OffHoursSection from "./components/OffHoursSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
+import SideRails from "./components/SideRails";
+import portfolioData from "./data/pageData";
 import LanguageProvider, { LanguageContext } from "./context/LanguageContext";
 import ThemeProvider from "./context/ThemeContext";
+
+// "01", "02"… follow the order defined in pageData.section_order
+const n = (id) => portfolioData.section_order.indexOf(id) + 1;
 
 const AppContent = () => {
   const { language } = useContext(LanguageContext);
@@ -39,14 +44,15 @@ const AppContent = () => {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection index={1} />
-        <ExperienceSection index={2} />
-        <ProjectsSection index={3} />
-        <CertificationsSection index={4} />
-        <OffHoursSection index={5} />
-        <ContactSection index={6} />
+        <AboutSection index={n("about")} />
+        <ExperienceSection index={n("experience")} />
+        <ProjectsSection index={n("projects")} />
+        <CertificationsSection index={n("certifications")} />
+        <OffHoursSection index={n("offhours")} />
+        <ContactSection index={n("contact")} />
       </main>
       <Footer />
+      <SideRails />
       <BackToTopButton />
     </div>
   );

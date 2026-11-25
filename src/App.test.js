@@ -37,9 +37,10 @@ test("featured projects come first", () => {
   expect(titles).toEqual(["FIFA Pick'em World Cup 2026", "Internal Ringlock TP"]);
 });
 
-test("unfilled content renders as a visible placeholder, not a link", () => {
+test("==highlight== markup renders as marks, never as raw text", () => {
   const { container } = render(<App />);
-  expect(container.querySelectorAll("mark.todo").length).toBeGreaterThan(0);
+  expect(container.querySelectorAll("mark.hl").length).toBeGreaterThan(0);
+  expect(container.textContent).not.toContain("==");
   expect(container.querySelector('a[href*="CẦN ANH"]')).toBeNull();
 });
 

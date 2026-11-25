@@ -4,6 +4,9 @@ const Section = ({ id, index, title, subtitle, children }) => (
     <div className="container">
       <header className="section-header fade-in">
         <span className="section-index">{String(index).padStart(2, "0")}</span>
+        <span className="section-ghost" aria-hidden="true">
+          {String(index).padStart(2, "0")}
+        </span>
         <h2 className="section-title">{title}</h2>
         {subtitle && <p className="section-subtitle">{subtitle}</p>}
       </header>

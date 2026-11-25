@@ -23,17 +23,16 @@ const portfolioData = {
     name: "Bùi Viết Quyền",
     email: "quyenbuiviet45@gmail.com",
     phone: "(+84) 0963 436 829",
-    // Toggle the "available for freelance" badge in the hero
-    available_for_freelance: true,
-    // Put the PDF in public/ (e.g. public/cv/bui-viet-quyen-cv.pdf) and set
-    // "/quyenbuijs/cv/bui-viet-quyen-cv.pdf" here.
-    cv_url: "[CẦN ANH ĐIỀN: link file CV PDF]",
+    // Shows the "available for freelance" badge (hero) and the
+    // availability line (contact) when true
+    available_for_freelance: false,
+    cv_url: "https://drive.google.com/file/d/14a1oRUaz0eRnb9hnZd03wuB3uMs3T1vJ/view?usp=sharing",
   },
 
   social_links: {
     github: "https://github.com/zzzogi",
     linkedin: "https://www.linkedin.com/in/buivietquyen",
-    facebook: "[CẦN ANH ĐIỀN: link Facebook]",
+    facebook: "https://www.facebook.com/buiv1etquyen/",
     email: "mailto:quyenbuiviet45@gmail.com",
   },
 
@@ -74,18 +73,26 @@ const portfolioData = {
     contact: { vi: "Liên hệ", en: "Contact" },
   },
 
+  // Order of numbered sections (drives "01 —" labels and the side rail)
+  section_order: ["about", "experience", "projects", "certifications", "offhours", "contact"],
+
   hero: {
     eyebrow: {
       vi: "Full-stack Engineer · Next.js · Hà Nội",
       en: "Full-stack Engineer · Next.js · Hanoi",
     },
     tagline: {
-      vi: "Tôi xây sản phẩm web từ nghiệp vụ đến production — từ hệ thống nội bộ cho doanh nghiệp đến game dự đoán World Cup với hơn 200 người chơi.",
-      en: "I build web products from business requirements to production — from internal systems for companies to a World Cup prediction game with 200+ players.",
+      vi: "Tôi xây sản phẩm web ==từ nghiệp vụ đến production== — từ hệ thống nội bộ cho doanh nghiệp đến game dự đoán World Cup với ==hơn 200 người chơi==.",
+      en: "I build web products ==from business requirements to production== — from internal systems for companies to a World Cup prediction game with ==200+ players==.",
     },
     badge: { vi: "Đang nhận dự án freelance", en: "Available for freelance work" },
     cta_projects: { vi: "Xem dự án", en: "View projects" },
     cta_contact: { vi: "Liên hệ", en: "Get in touch" },
+    // Small floating labels around the portrait
+    stickers: [
+      { icon: "⚽", text: { vi: "200+ người chơi", en: "200+ players" } },
+      { icon: "⚡", text: { vi: "Next.js · Supabase", en: "Next.js · Supabase" } },
+    ],
     portrait: {
       src: `${IMG}/hero/portrait-800.webp`,
       srcSet: `${IMG}/hero/portrait-480.webp 480w, ${IMG}/hero/portrait-800.webp 800w`,
@@ -122,8 +129,8 @@ const portfolioData = {
       {
         label: { vi: "Định hướng", en: "Focus" },
         value: {
-          vi: "[CẦN ANH ĐIỀN: định hướng nghề nghiệp]",
-          en: "[CẦN ANH ĐIỀN: định hướng nghề nghiệp]",
+          vi: "Full-stack · DevOps · Data Analyst",
+          en: "Full-stack · DevOps · Data Analyst",
         },
       },
       {
@@ -145,22 +152,22 @@ const portfolioData = {
         en: "Công ty CP Tập đoàn Thiết bị xây dựng TP",
       },
       position: {
-        vi: "Chuyên viên Chuyển đổi số → Freelance Developer & BA (từ [CẦN ANH ĐIỀN: tháng/năm])",
-        en: "Digital Transformation Specialist → Freelance Developer & BA (since [CẦN ANH ĐIỀN: tháng/năm])",
+        vi: "Chuyên viên Chuyển đổi số → Freelance Developer & BA (từ 04/2026)",
+        en: "Digital Transformation Specialist → Freelance Developer & BA (since 04/2026)",
       },
       duration: { vi: "02/2026 – nay", en: "02/2026 – present" },
       bullets: {
         vi: [
           "Khảo sát quy trình 4 phòng ban (Kinh doanh, Kế toán, Hành chính–Nhân sự, Kho) bằng hệ thống form Google Apps Script cấu hình hoá.",
           "Đánh giá 2 nhà cung cấp ERP (Workit, CMC): phân tích báo giá, lập bảng yêu cầu; đề xuất tự xây công cụ nội bộ thay vì mua ERP.",
-          "Xây hệ thống nội bộ Internal Ringlock TP (Next.js + Prisma + Supabase, Vercel): quản lý tài liệu phân quyền theo vai trò, LMS nội bộ TP Academy, trang quản trị đồng bộ dữ liệu MISA.",
-          "Module tính hoá đơn tự động: đọc file Excel xuất từ MISA, tính tiền thuê thiết bị và xuất bộ hồ sơ thanh toán đúng mẫu kế toán, thay cho quy trình Excel thủ công.",
+          "Xây hệ thống nội bộ Internal Ringlock TP (Next.js + Prisma + Supabase, Vercel) cho 10 người dùng: quản lý tài liệu phân quyền theo vai trò, LMS nội bộ TP Academy, trang quản trị đồng bộ dữ liệu MISA.",
+          "Module tính hoá đơn tự động: đọc file Excel xuất từ MISA, tính tiền thuê thiết bị và xuất bộ hồ sơ thanh toán đúng mẫu kế toán — rút việc tính và đối soát từ 2–3 ngày xuống vài giây khi dữ liệu đã nạp đủ.",
         ],
         en: [
           "Mapped workflows across 4 departments (Sales, Accounting, HR & Admin, Warehouse) using a configurable Google Apps Script form system.",
           "Evaluated 2 ERP vendors (Workit, CMC): broke down their quotes and wrote the requirements matrix, then recommended building in-house tools instead of buying an ERP.",
-          "Built Internal Ringlock TP (Next.js + Prisma + Supabase on Vercel): role-based document management, the TP Academy internal LMS, and an admin panel that syncs data from MISA.",
-          "Automated invoicing: reads Excel exports from MISA, calculates equipment rental charges and generates the full payment pack in the accounting team's template — replacing a manual Excel process.",
+          "Built Internal Ringlock TP (Next.js + Prisma + Supabase on Vercel) for 10 internal users: role-based document management, the TP Academy internal LMS, and an admin panel that syncs data from MISA.",
+          "Automated invoicing: reads Excel exports from MISA, calculates equipment rental charges and generates the full payment pack in the accounting team's template — cutting calculation and reconciliation from 2–3 days to seconds once the data is loaded.",
         ],
       },
       technologies: ["Next.js", "TypeScript", "Prisma", "Supabase", "Business Analysis", "MISA"],
@@ -197,16 +204,12 @@ const portfolioData = {
       duration: { vi: "02/2023 – 02/2024", en: "02/2023 – 02/2024" },
       bullets: {
         vi: [
-          "Phát triển front-end web định giá xe ô tô bằng AI.",
-          "Xây trang web gán nhãn bộ phận xe ô tô.",
-          "Phát triển các trang thống kê báo cáo và trang quản lý nhân sự nội bộ.",
-          "[CẦN ANH ĐIỀN: số liệu nếu có, vd. số người dùng / số ảnh được gán nhãn]",
+          "Phát triển front-end cho web định giá xe ô tô bằng AI — hệ thống xử lý 1–2 nghìn request mỗi ngày, đạt 99,78% status OK.",
+          "Phát triển các trang thống kê báo cáo và trang quản lý nhân sự nội bộ cho 12 người dùng.",
         ],
         en: [
-          "Built the front end of an AI-powered car valuation web app.",
-          "Built a web tool for labeling car parts.",
-          "Built internal reporting dashboards and an employee management site.",
-          "[CẦN ANH ĐIỀN: số liệu nếu có, vd. số người dùng / số ảnh được gán nhãn]",
+          "Built the front end of an AI car valuation web app — the system handles 1–2K requests a day at a 99.78% OK rate.",
+          "Built internal reporting dashboards and an employee management site used by 12 people.",
         ],
       },
       technologies: ["React", "Redux", "Redux Saga", "TypeScript", "MUI", "Recharts"],
@@ -218,14 +221,12 @@ const portfolioData = {
       duration: { vi: "11/2022 – 02/2023", en: "11/2022 – 02/2023" },
       bullets: {
         vi: [
-          "Tham gia phát triển các website nội bộ của công ty với React, Redux Saga và TypeScript.",
+          "Phát triển website nội bộ với React, Redux Saga và TypeScript cho một đội 5 người dùng.",
           "Làm quen quy trình làm việc nhóm và văn hoá công ty, sau đó được xếp vào dự án AI Cycle với vai trò lập trình viên chính thức.",
-          "[CẦN ANH ĐIỀN: số liệu nếu có]",
         ],
         en: [
-          "Contributed to the company's internal web apps with React, Redux Saga and TypeScript.",
+          "Built an internal web app with React, Redux Saga and TypeScript for a 5-person team.",
           "Got up to speed on the team's workflow and culture, then moved onto the AI Cycle project as a full-time developer.",
-          "[CẦN ANH ĐIỀN: số liệu nếu có]",
         ],
       },
       technologies: ["React", "Redux", "Redux Saga", "TypeScript", "MUI", "Next.js"],
@@ -307,23 +308,20 @@ const portfolioData = {
           "Khảo sát quy trình Kinh doanh, Kế toán, Hành chính–Nhân sự và Kho bằng hệ thống form Google Apps Script cấu hình hoá.",
           "Phân tích báo giá, lập bảng yêu cầu cho 2 nhà cung cấp ERP (Workit, CMC) và đề xuất tự xây công cụ nội bộ thay vì mua ERP.",
           "Xây hệ thống trên Next.js + Prisma + Supabase (Vercel): quản lý tài liệu phân quyền theo vai trò, LMS nội bộ TP Academy, trang quản trị đồng bộ dữ liệu MISA.",
-          "Module hoá đơn: đọc file Excel xuất từ MISA, tính tiền thuê thiết bị và xuất bộ hồ sơ thanh toán đúng mẫu kế toán.",
+          "Module hoá đơn: đọc file Excel xuất từ MISA, tính tiền thuê thiết bị và xuất bộ hồ sơ thanh toán đúng mẫu kế toán — thay cho 2–3 ngày tính và đối soát thủ công.",
         ],
         en: [
           "Mapped Sales, Accounting, HR & Admin and Warehouse workflows with a configurable Google Apps Script form system.",
           "Broke down quotes and wrote the requirements matrix for two ERP vendors (Workit, CMC), then recommended building in-house tools instead.",
           "Built the platform on Next.js + Prisma + Supabase (Vercel): role-based document management, the TP Academy internal LMS, and an admin panel that syncs MISA data.",
-          "Invoicing module: reads MISA Excel exports, calculates equipment rental charges and generates the payment pack in the accounting team's template.",
+          "Invoicing module: reads MISA Excel exports, calculates equipment rental charges and generates the payment pack in the accounting team's template — replacing 2–3 days of manual calculation and reconciliation.",
         ],
       },
       metrics: [
+        { wide: true, value: { vi: "2–3 ngày → vài giây", en: "2–3 days → seconds" }, label: { vi: "tính hoá đơn + đối soát, khi dữ liệu đã nạp đủ", en: "to calculate and reconcile invoices, once data is loaded" } },
+        { value: { vi: "10", en: "10" }, label: { vi: "người dùng nội bộ", en: "internal users" } },
         { value: { vi: "4", en: "4" }, label: { vi: "phòng ban được khảo sát quy trình", en: "departments' workflows mapped" } },
         { value: { vi: "2", en: "2" }, label: { vi: "nhà cung cấp ERP được đánh giá", en: "ERP vendors evaluated" } },
-        { value: { vi: "Tự động", en: "Automated" }, label: { vi: "tính hoá đơn thuê thiết bị, thay cho Excel thủ công", en: "rental invoicing, replacing manual Excel work" } },
-        {
-          value: { vi: "[CẦN ANH ĐIỀN]", en: "[CẦN ANH ĐIỀN]" },
-          label: { vi: "số liệu tác động, vd. giờ tiết kiệm mỗi kỳ / số người dùng nội bộ", en: "impact metric, e.g. hours saved per cycle / internal users" },
-        },
       ],
       technologies: ["Next.js", "TypeScript", "Prisma", "Supabase", "Vercel", "Google Apps Script", "MISA"],
       links: [],
@@ -351,8 +349,8 @@ const portfolioData = {
         en: "Two free, no-sign-up tax calculators: Thuế Gọn for Vietnamese household businesses and GigTaxMath for US rideshare and delivery drivers. Both run on Cloudflare.",
       },
       result: {
-        vi: "[CẦN ANH ĐIỀN: số liệu, vd. lượt truy cập/tháng]",
-        en: "[CẦN ANH ĐIỀN: số liệu, vd. lượt truy cập/tháng]",
+        vi: "Giai đoạn đầu: Thuế Gọn 100+ và GigTaxMath 200+ impressions.",
+        en: "Early days: 100+ impressions for Thuế Gọn and 200+ for GigTaxMath so far.",
       },
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vitest", "Cloudflare"],
       links: [
@@ -416,8 +414,8 @@ const portfolioData = {
         en: "Built the front end of an AI car valuation app: the vehicle details form, registration-photo upload for auto-fill, and a results view with charts.",
       },
       result: {
-        vi: "[CẦN ANH ĐIỀN: số liệu nếu có]",
-        en: "[CẦN ANH ĐIỀN: số liệu nếu có]",
+        vi: "Xử lý 1–2 nghìn request mỗi ngày, đạt 99,78% status OK.",
+        en: "Handles 1–2K requests a day at a 99.78% OK rate.",
       },
       technologies: ["React", "React Query", "MUI", "Recharts"],
       links: [],
@@ -443,6 +441,12 @@ const portfolioData = {
     },
     courses: [
       {
+        title: "Learn Go",
+        issuer: "Boot.dev",
+        date: "",
+        url: "https://www.boot.dev/certificates/1be9e6e6-0dbe-4421-83e6-a04bda74f6c8",
+      },
+      {
         title: "The Complete JavaScript Course 2022: From Zero to Expert!",
         issuer: "Udemy",
         date: "2022",
@@ -458,13 +462,7 @@ const portfolioData = {
         title: "Node.js, Express, MongoDB Bootcamp",
         issuer: "Udemy",
         date: "2022",
-        url: "[CẦN ANH ĐIỀN: link chứng chỉ Udemy Node.js]",
-      },
-      {
-        title: "Go — Backend Developer Path",
-        issuer: "Boot.dev",
-        date: "",
-        url: "[CẦN ANH ĐIỀN: link chứng nhận Boot.dev]",
+        url: "https://www.udemy.com/certificate/UC-9f637a4f-593b-4556-a152-b7c9de575f7a/",
       },
     ],
   },

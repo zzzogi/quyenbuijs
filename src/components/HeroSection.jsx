@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import portfolioData from "../data/pageData";
 import { scrollToSection } from "./Header";
-import { MaybeLink } from "./Todo";
+import { MaybeLink, T } from "./Todo";
 import Icon from "./Icon";
 
 const HeroSection = () => {
@@ -22,7 +22,9 @@ const HeroSection = () => {
           )}
           <p className="hero-eyebrow rise delay-1">{hero.eyebrow[language]}</p>
           <h1 className="hero-title rise delay-2">{personal_info.name}</h1>
-          <p className="hero-tagline rise delay-3">{hero.tagline[language]}</p>
+          <p className="hero-tagline rise delay-3">
+            <T>{hero.tagline[language]}</T>
+          </p>
           <div className="hero-ctas rise delay-4">
             <a
               href="#projects"
@@ -69,6 +71,12 @@ const HeroSection = () => {
               decoding="async"
             />
           </div>
+          {hero.stickers.map((sticker, i) => (
+            <span key={sticker.text.en} className={`hero-sticker hero-sticker--${i + 1}`}>
+              <span aria-hidden="true">{sticker.icon}</span>
+              {sticker.text[language]}
+            </span>
+          ))}
         </div>
       </div>
     </section>

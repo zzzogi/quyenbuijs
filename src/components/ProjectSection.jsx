@@ -126,7 +126,7 @@ const FeaturedProject = ({ project, language }) => {
           <p className="aside-label">{ui.result[language]}</p>
           <ul className="metrics">
             {project.metrics.map((m) => (
-              <li key={m.label.en} className="metric">
+              <li key={m.label.en} className={`metric ${m.wide ? "metric--wide" : ""}`}>
                 <span className="metric-value">
                   <T>{m.value[language]}</T>
                 </span>

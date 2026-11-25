@@ -16,7 +16,9 @@ const ContactSection = ({ index }) => {
           <span className="section-index">{String(index).padStart(2, "0")}</span>
           <h2 className="contact-heading">{contact.heading[language]}</h2>
           <p className="contact-pitch">{contact.pitch[language]}</p>
-          <p className="contact-availability">{contact.availability[language]}</p>
+          {personal_info.available_for_freelance && (
+            <p className="contact-availability">{contact.availability[language]}</p>
+          )}
           <a href={social_links.email} className="contact-email">
             {personal_info.email}
           </a>
